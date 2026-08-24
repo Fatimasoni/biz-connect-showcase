@@ -1,0 +1,938 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Biz Connect Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Marcellus&display=swap">
+<style>
+/* ---------- tokens : light (default, un-stamped) ---------- */
+:root{
+  --ground:#FAF6FC;
+  --surface:#FFFFFF;
+  --surface-2:#F2EAF6;
+  --ink:#241733;
+  --ink-2:#5C4A6B;
+  --ink-3:#6E5C7D;
+  --rule:#E4D8EC;
+  --rule-strong:#CDBADA;
+  --violet:#6B2F9E;
+  --on-violet:#FFFFFF;
+  --violet-soft:#EFE3F7;
+  --gold:#7E5D12;
+  --gold-line:#D8BD73;
+  --plum-deep:#150C1D;
+
+  /* hero band keeps one committed dark world in both themes */
+  --hero-bg:#150C1D;
+  --hero-bg-2:#2A1140;
+  --hero-ink:#F6F0FA;
+  --hero-ink-2:#C0AACF;
+  --hero-gold:#E3BE63;
+  --hero-line:rgba(227,190,99,.30);
+
+  --shadow:0 1px 2px rgba(36,23,51,.05), 0 12px 32px -18px rgba(36,23,51,.28);
+  --maxw:1120px;
+  --step:clamp(3.5rem, 7vw, 6.5rem);
+}
+/* ---------- tokens : dark ---------- */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#130B1B;
+    --surface:#1C1226;
+    --surface-2:#261733;
+    --ink:#F2EAF8;
+    --ink-2:#BCA9C9;
+    --ink-3:#9C8AAA;
+    --rule:#33223F;
+    --rule-strong:#4A3359;
+    --violet:#C299EE;
+    --on-violet:#160C1E;
+    --violet-soft:#2A1A3A;
+    --gold:#E0BA5C;
+    --gold-line:#7A5F22;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -18px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#130B1B;
+  --surface:#1C1226;
+  --surface-2:#261733;
+  --ink:#F2EAF8;
+  --ink-2:#BCA9C9;
+  --ink-3:#9C8AAA;
+  --rule:#33223F;
+  --rule-strong:#4A3359;
+  --violet:#C299EE;
+  --on-violet:#160C1E;
+  --violet-soft:#2A1A3A;
+  --gold:#E0BA5C;
+  --gold-line:#7A5F22;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -18px rgba(0,0,0,.7);
+}
+
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:"Marcellus",Georgia,"Times New Roman",serif;font-weight:400;text-wrap:balance;margin:0;letter-spacing:.005em}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%}
+:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:2px}
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2.5rem)}
+.eyebrow{
+  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  color:var(--gold);margin:0;
+}
+.rule-gold{height:1px;background:var(--gold-line);opacity:.7;border:0;margin:0}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:color-mix(in srgb, var(--ground) 88%, transparent);
+  backdrop-filter:saturate(1.4) blur(12px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-in{display:flex;align-items:center;gap:1.5rem;height:70px}
+.mark{display:flex;align-items:center;gap:.7rem;text-decoration:none;margin-right:auto}
+.mark-glyph{width:30px;height:30px;flex:none;color:var(--violet)}
+.mark-txt{display:flex;flex-direction:column;line-height:1.05}
+.mark-txt b{font-family:"Marcellus",serif;font-weight:400;font-size:1.02rem;letter-spacing:.02em}
+.mark-txt span{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.nav-links{display:flex;gap:1.6rem;align-items:center}
+.nav-links a:not(.btn){
+  text-decoration:none;font-size:.88rem;font-weight:500;color:var(--ink-2);
+  padding-block:.35rem;border-bottom:1px solid transparent;transition:color .18s,border-color .18s;
+}
+.nav-links a:not(.btn):hover{color:var(--ink);border-bottom-color:var(--gold-line)}
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;
+  font-family:"Archivo",sans-serif;font-size:.86rem;font-weight:600;letter-spacing:.02em;
+  padding:.72rem 1.35rem;border-radius:2px;border:1px solid transparent;
+  transition:transform .16s ease, background .16s, color .16s, border-color .16s;
+}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--violet);color:var(--on-violet);border-color:var(--violet)}
+.btn-primary:hover{background:color-mix(in srgb,var(--violet) 82%, var(--ink))}
+.btn-ghost{border-color:var(--rule-strong);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--gold-line);color:var(--gold)}
+.btn-gold{background:var(--hero-gold);color:#1B1005;border-color:var(--hero-gold)}
+.btn-gold:hover{background:#F0CE7B}
+.btn-outline-gold{border-color:var(--hero-line);color:var(--hero-ink)}
+.btn-outline-gold:hover{border-color:var(--hero-gold);color:var(--hero-gold)}
+.nav-links > .btn-primary{display:none}
+.nav-toggle{display:none;background:none;border:1px solid var(--rule-strong);border-radius:2px;color:var(--ink);padding:.5rem .7rem;font-size:.8rem;cursor:pointer}
+
+@media (max-width:900px){
+  .nav-links{
+    position:absolute;top:70px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;
+    background:var(--surface);border-bottom:1px solid var(--rule);padding:.5rem 1.25rem 1.1rem;
+    display:none;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a:not(.btn){padding-block:.8rem;border-bottom:1px solid var(--rule)}
+  .nav-toggle{display:block}
+  .nav .btn-primary{display:none}
+  .nav-links > .btn-primary{display:inline-flex;justify-content:center;margin-top:.9rem;border-bottom:0}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;isolation:isolate;
+  background:
+    radial-gradient(120% 90% at 78% 8%, var(--hero-bg-2) 0%, transparent 62%),
+    var(--hero-bg);
+  color:var(--hero-ink);
+  border-bottom:1px solid var(--hero-line);
+}
+#khatam{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.55}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(21,12,29,.15) 0%,rgba(21,12,29,.55) 72%,rgba(21,12,29,.9) 100%);
+}
+.hero-in{padding-block:clamp(4rem,10vw,7.5rem) clamp(3rem,6vw,4.5rem);display:flex;flex-direction:column;gap:2rem}
+.hero .eyebrow{color:var(--hero-gold)}
+.hero-arabic{
+  font-family:"Marcellus",serif;font-size:clamp(1rem,2.2vw,1.22rem);
+  color:var(--hero-gold);letter-spacing:.05em;font-style:italic;
+}
+.hero h1{
+  font-size:clamp(2.9rem,8.2vw,6rem);line-height:.98;letter-spacing:-.012em;color:var(--hero-ink);
+  max-width:15ch;
+}
+.hero h1 em{font-style:normal;color:var(--hero-gold)}
+.hero-lede{color:var(--hero-ink-2);max-width:56ch;font-size:clamp(1rem,1.6vw,1.12rem)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:0 2.5rem;row-gap:1.1rem;padding-top:.5rem}
+.meta-item{display:flex;flex-direction:column;gap:.3rem;border-left:1px solid var(--hero-line);padding-left:1rem}
+.meta-item .k{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--hero-gold);font-weight:600}
+.meta-item .v{font-family:"Marcellus",serif;font-size:1.06rem;color:var(--hero-ink);line-height:1.35}
+.meta-item .v small{display:block;font-family:"Archivo",sans-serif;font-size:.78rem;color:var(--hero-ink-2);letter-spacing:.01em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;padding-top:.5rem}
+
+/* countdown */
+.countdown{display:flex;gap:clamp(.5rem,2vw,1.1rem);flex-wrap:wrap;padding-top:1.4rem;border-top:1px solid var(--hero-line);margin-top:.6rem}
+.cd-cell{min-width:74px}
+.cd-num{
+  font-family:"Marcellus",serif;font-size:clamp(1.9rem,4.6vw,2.9rem);line-height:1;
+  color:var(--hero-ink);font-variant-numeric:tabular-nums;
+}
+.cd-lbl{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--hero-ink-2);font-weight:600;margin-top:.4rem}
+
+/* ---------- generic section ---------- */
+section{scroll-margin-top:78px}
+.sec{padding-block:var(--step)}
+.sec-head .eyebrow{display:flex;align-items:center;gap:.5rem}
+.sec-head{display:flex;flex-direction:column;gap:.85rem;max-width:62ch;margin-bottom:2.75rem}
+.sec-head h2{font-size:clamp(1.85rem,4.2vw,2.9rem);line-height:1.1}
+.sec-head p{color:var(--ink-2)}
+.alt{background:var(--surface-2);border-block:1px solid var(--rule)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  *{animation:none !important}
+}
+
+/* ---------- vision / quote ---------- */
+.vision{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.quote{
+  position:relative;background:var(--surface);border:1px solid var(--rule);
+  border-top:3px solid var(--gold-line);padding:clamp(1.6rem,3.5vw,2.4rem);box-shadow:var(--shadow);
+}
+.quote blockquote{
+  margin:0;font-family:"Marcellus",serif;font-size:clamp(1.15rem,2.3vw,1.42rem);line-height:1.45;color:var(--ink);
+}
+.quote figcaption{margin-top:1.2rem;font-size:.8rem;color:var(--ink-3);letter-spacing:.03em}
+.vision-body{display:flex;flex-direction:column;gap:1.15rem;color:var(--ink-2)}
+.vision-body strong{color:var(--ink);font-weight:600}
+@media (max-width:820px){.vision{grid-template-columns:1fr}}
+
+/* ---------- audience chips ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.9rem}
+.chip{
+  border:1px solid var(--rule-strong);border-radius:999px;padding:.48rem 1rem;
+  font-size:.84rem;color:var(--ink-2);background:var(--surface);
+}
+.chip:nth-child(3n){border-color:var(--gold-line);color:var(--gold)}
+
+/* ---------- two-col value lists ---------- */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem)}
+@media (max-width:820px){.cols{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--rule);padding:clamp(1.5rem,3vw,2.2rem);box-shadow:var(--shadow)}
+.card h3{font-size:1.5rem;margin-bottom:.35rem}
+.card > .eyebrow{margin-bottom:.9rem}
+.tick{list-style:none;margin:1.2rem 0 0;padding:0;display:flex;flex-direction:column;gap:.85rem}
+.tick li{display:flex;gap:.85rem;font-size:.95rem;color:var(--ink-2);line-height:1.55}
+.tick li::before{
+  content:"";flex:none;width:9px;height:9px;margin-top:.55rem;
+  background:var(--gold);transform:rotate(45deg);opacity:.85;
+}
+
+/* ---------- programme ---------- */
+.days{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+.day{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.2rem,4vw,3rem);padding-block:2.1rem;border-bottom:1px solid var(--rule)}
+.day-no{
+  font-family:"Marcellus",serif;font-size:clamp(2.2rem,6vw,3.4rem);line-height:.9;color:var(--gold);
+  font-variant-numeric:tabular-nums;min-width:2.4ch;
+}
+.day-body h3{font-size:1.42rem;margin-bottom:.15rem}
+.day-date{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-bottom:.9rem}
+.day-body p{color:var(--ink-2);font-size:.96rem;max-width:62ch}
+.day-focus{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);font-weight:600;margin-bottom:.9rem}
+.day-list{list-style:none;margin:1rem 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.55rem 1.6rem}
+@media (max-width:640px){.day-list{grid-template-columns:1fr}}
+.day-list li{display:flex;gap:.6rem;font-size:.9rem;color:var(--ink-2);line-height:1.5}
+.day-list li .ic{color:var(--gold);margin-top:.2rem;width:1.05rem;height:1.05rem}
+.day-theme{font-family:"Archivo",sans-serif;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--gold);border:1px solid var(--gold-line);padding:.18rem .55rem;border-radius:2px;vertical-align:middle;margin-left:.7rem}
+.day-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem}
+.tag{font-size:.72rem;letter-spacing:.06em;padding:.3rem .7rem;border:1px solid var(--rule-strong);color:var(--ink-3);border-radius:2px}
+.draft-note{
+  margin-top:1.8rem;font-size:.82rem;color:var(--ink-3);border-left:2px solid var(--gold-line);padding-left:.9rem;
+}
+
+/* ---------- passes ---------- */
+.passes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+@media (max-width:900px){.passes{grid-template-columns:1fr}}
+.pass{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--rule);padding:clamp(1.5rem,3vw,2rem);box-shadow:var(--shadow)}
+.pass.feature{border-color:var(--gold-line);box-shadow:0 0 0 1px var(--gold-line), var(--shadow)}
+.pass h3{font-size:1.55rem}
+.pass .price{font-family:"Marcellus",serif;font-size:1.25rem;color:var(--violet);margin-block:.9rem .2rem}
+.pass .price small{display:block;font-family:"Archivo",sans-serif;font-size:.76rem;color:var(--ink-3);letter-spacing:.05em;text-transform:uppercase;font-weight:600;margin-top:.35rem}
+.pass .tick{flex:1}
+.pass .btn{margin-top:1.6rem;justify-content:center}
+
+/* ---------- embedded registration form ---------- */
+.form-shell{
+  background:var(--surface);border:1px solid var(--rule);border-top:3px solid var(--gold-line);
+  box-shadow:var(--shadow);overflow:hidden;
+}
+.form-note{
+  display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;align-items:center;
+  padding:1.1rem clamp(1.1rem,3vw,1.8rem);border-bottom:1px solid var(--rule);
+  background:var(--violet-soft);font-size:.86rem;color:var(--ink-2);
+}
+.form-note span{display:inline-flex;align-items:center;gap:.5rem}
+.form-note strong{color:var(--ink);font-weight:600}
+.form-note span strong + strong{margin-left:0}
+.form-note .ic{color:var(--violet)}
+.form-frame{position:relative;background:var(--surface)}
+.form-frame iframe{
+  display:block;width:100%;height:clamp(680px,105vh,1180px);border:0;background:var(--surface);
+}
+.form-fallback{
+  display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;justify-content:space-between;
+  padding:1rem clamp(1.1rem,3vw,1.8rem);border-top:1px solid var(--rule);
+  font-size:.84rem;color:var(--ink-3);
+}
+.form-fallback a{
+  display:inline-flex;align-items:center;gap:.45rem;color:var(--violet);font-weight:600;text-decoration:none;
+  border-bottom:1px solid transparent;
+}
+.form-fallback a:hover{border-bottom-color:var(--violet)}
+
+/* ---------- venue ---------- */
+.venue{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:820px){.venue{grid-template-columns:1fr}}
+.venue-facts{list-style:none;margin:1.8rem 0 0;padding:0;display:grid;gap:0}
+.venue-facts li{display:grid;grid-template-columns:9rem 1fr;gap:1rem;padding-block:.85rem;border-top:1px solid var(--rule);font-size:.93rem;color:var(--ink-2)}
+.venue-facts li:last-child{border-bottom:1px solid var(--rule)}
+.venue-facts b{font-weight:600;color:var(--ink-3);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;padding-top:.2rem}
+.venue-art{aspect-ratio:4/3;width:100%;border:1px solid var(--rule);background:var(--plum-deep);position:relative;overflow:hidden}
+#venueCanvas{position:absolute;inset:0;width:100%;height:100%}
+.venue-art figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:1rem 1.2rem;color:#EDE2F5;
+  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  background:linear-gradient(180deg,transparent,rgba(21,12,29,.85));
+}
+
+/* ---------- sponsor band ---------- */
+.band{background:var(--plum-deep);color:#F3EBF8;border-block:1px solid var(--gold-line)}
+.band-in{padding-block:clamp(3rem,6vw,4.5rem);display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+@media (max-width:820px){.band-in{grid-template-columns:1fr}}
+.band h2{font-size:clamp(1.7rem,3.6vw,2.5rem);color:#F3EBF8}
+.band p{color:#BFA9CE;margin-top:.9rem;max-width:52ch}
+.band .eyebrow{color:var(--hero-gold)}
+.band-cta{display:flex;flex-wrap:wrap;gap:.8rem}
+
+/* ---------- faq ---------- */
+.faq{border-top:1px solid var(--rule);max-width:62rem}
+details{border-bottom:1px solid var(--rule)}
+summary{
+  cursor:pointer;list-style:none;padding-block:1.2rem;display:flex;gap:1rem;align-items:baseline;
+  font-family:"Marcellus",serif;font-size:1.1rem;color:var(--ink);
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";margin-left:auto;color:var(--gold);font-family:"Archivo",sans-serif;font-size:1.1rem;transition:transform .2s}
+details[open] summary::after{content:"\2212"}
+details p{padding-bottom:1.35rem;color:var(--ink-2);font-size:.95rem;max-width:64ch}
+
+/* ---------- footer ---------- */
+footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-block:3.2rem 2.4rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+@media (max-width:820px){.foot-grid{grid-template-columns:1fr}}
+.foot-grid h4{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);font-family:"Archivo",sans-serif;font-weight:600;margin-bottom:.9rem}
+.foot-grid a{display:block;text-decoration:none;color:var(--ink-2);font-size:.92rem;padding-block:.28rem}
+.foot-grid a:hover{color:var(--gold)}
+.foot-bottom{margin-top:2.6rem;padding-top:1.4rem;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;font-size:.8rem;color:var(--ink-3)}
+.foot-lede{color:var(--ink-2);font-size:.93rem;max-width:38ch;margin-top:.9rem}
+
+/* ---------- icons ---------- */
+.sprite{display:none}
+.ic{
+  width:1em;height:1em;flex:none;display:inline-block;vertical-align:-.13em;
+  fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
+}
+.ic-lg{width:1.55rem;height:1.55rem;stroke-width:1.5}
+.card-ic{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:2.6rem;height:2.6rem;border:1px solid var(--gold-line);border-radius:2px;
+  color:var(--gold);margin-bottom:1.1rem;
+}
+.meta-item .k .ic{margin-right:.4em;stroke-width:1.9}
+.chip{display:inline-flex;align-items:center;gap:.5rem}
+.chip .ic{color:var(--gold);width:.95rem;height:.95rem}
+.venue-facts b{display:flex;align-items:center;gap:.45rem}
+.venue-facts b .ic{color:var(--gold);width:.95rem;height:.95rem;stroke-width:1.9}
+</style>
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+<defs>
+<symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+<symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V4h10v17M14 9.5h6V21M7.5 8h3M7.5 12h3M7.5 16h3M16.5 13h1.5M16.5 17h1.5"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M2.8 20a6.2 6.2 0 0 1 12.4 0"/><circle cx="17.5" cy="8.8" r="2.5"/><path d="M16.6 14.3a6 6 0 0 1 4.6 5.7"/></symbol>
+<symbol id="i-store" viewBox="0 0 24 24"><path d="M4 10v10h16V10M2.5 10 4.2 4.5h15.6L21.5 10M9.5 20v-6h5v6"/></symbol>
+<symbol id="i-mic" viewBox="0 0 24 24"><rect x="9.4" y="3" width="5.2" height="10.5" rx="2.6"/><path d="M6.5 11.5a5.5 5.5 0 0 0 11 0M12 17v4M9.5 21h5"/></symbol>
+<symbol id="i-utensils" viewBox="0 0 24 24"><path d="M6 3v6.5a2 2 0 0 0 4 0V3M8 9.5V21M17.2 3c-1.6 1-2.7 3-2.7 5.6 0 2 1.2 3.4 2.7 3.4s2.7-1.4 2.7-3.4c0-2.6-1.1-4.6-2.7-5.6zM17.2 12v9"/></symbol>
+<symbol id="i-panel" viewBox="0 0 24 24"><path d="M3 5h13v9H8l-5 3.5V14H3z"/><path d="M19 9.5h2V19l-3-2.5h-6.5"/></symbol>
+<symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 20.5h18V10l-5.5 3.5V10L10 13.5V6.5H3z"/><path d="M6.5 17h2M12 17h2M17 17h1.5"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M10.3 8.6 16 12l-5.7 3.4z"/></symbol>
+<symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 2.8c3.4 2.2 5.3 5.6 5.3 9.5L12 17.6 6.7 12.3c0-3.9 1.9-7.3 5.3-9.5z"/><circle cx="12" cy="10" r="1.9"/><path d="M9.2 16.3 6.6 21l4.1-1.9M14.8 16.3 17.4 21l-4.1-1.9"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 3.5v17h16"/><path d="M7.5 15.5 11 11l3.2 2.6L20 7.5"/></symbol>
+<symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="5"/><path d="M8.8 13 7.5 21l4.5-2.4L16.5 21l-1.3-8"/></symbol>
+<symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 7.5h18v3.2a1.6 1.6 0 0 0 0 3.2v3.6H3v-3.6a1.6 1.6 0 0 0 0-3.2z"/><path d="M14 8.6v1.6M14 13.2v1.6M14 17.8v-1.6"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.4 2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.8l6-.9z"/></symbol>
+<symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 12.2 3 18.5l3.8-6.3L3 5.9z"/><path d="M6.8 12.2h8"/></symbol>
+<symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16.5h16v-4l-2-5H6l-2 5z"/><path d="M4 12.5h16"/><circle cx="7.5" cy="18.5" r="1.6"/><circle cx="16.5" cy="18.5" r="1.6"/></symbol>
+<symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 19V8M3 13.5h18V19M21 19v-3"/><path d="M6.5 10h3.2a2 2 0 0 1 2 2v1.5H6.5z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.8 7 8.2 6 8.2-6"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4.5 12h14M13 6.5l5.5 5.5-5.5 5.5"/></symbol>
+<symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 4.5v14M6.5 13l5.5 5.5L17.5 13"/></symbol>
+<symbol id="i-external" viewBox="0 0 24 24"><path d="M14 3.5h6.5V10M20.5 3.5 11 13"/><path d="M18 14v5.5a1.8 1.8 0 0 1-1.8 1.8H4.8A1.8 1.8 0 0 1 3 19.5V8.2a1.8 1.8 0 0 1 1.8-1.8H10"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></symbol>
+<symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9.5 18.5h5M10.2 21.5h3.6"/><path d="M12 2.8a6.2 6.2 0 0 0-3.7 11.2c.7.5 1.2 1.3 1.2 2.2v.3h5v-.3c0-.9.5-1.7 1.2-2.2A6.2 6.2 0 0 0 12 2.8z"/></symbol>
+<symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M8.5 7V5.2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2V7M2.5 12.5h19"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.4"/><path d="M5.2 20.5a6.8 6.8 0 0 1 13.6 0"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.2 2.5 5 13.5h5.6L10.8 21.5 19 10.5h-5.6z"/></symbol>
+<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M20.2 5.2a4.6 4.6 0 0 1-6.1 6.1L5.4 20 4 18.6l8.7-8.7a4.6 4.6 0 0 1 6.1-6.1l-3 3 2 2z"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.3 12 3.8l8.5 6.5V20.5h-5.8v-5.4H9.3v5.4H3.5z"/></symbol>
+<symbol id="i-cap" viewBox="0 0 24 24"><path d="M2.5 9 12 5l9.5 4-9.5 4z"/><path d="M6.8 11v4.4c0 1.4 2.3 2.5 5.2 2.5s5.2-1.1 5.2-2.5V11M21.5 9.2V15"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.4l3.4 2"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.8 4.5 5.8v6c0 4.2 3 8 7.5 9.4 4.5-1.4 7.5-5.2 7.5-9.4v-6z"/><path d="m8.8 12 2.3 2.3 4.1-4.5"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="M16.5 3.8 20.2 7.5 8.7 19H5v-3.7z"/><path d="M14 6.3 17.7 10M4 22h16"/></symbol>
+</defs>
+</svg>
+
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="mark" href="#top">
+      <svg class="mark-glyph" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M50 4 61 28 85 15 76 41 100 50 76 59 85 85 61 72 50 96 39 72 15 85 24 59 0 50 24 41 15 15 39 28Z"
+              fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+      </svg>
+      <span class="mark-txt">
+        <b>Biz Connect</b>
+        <span>Chicago 2026</span>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#who">Who Attends</a>
+      <a href="#programme">Programme</a>
+      <a href="#passes">Passes</a>
+      <a href="#venue">Venue</a>
+      <a href="#faq">FAQ</a>
+      <a href="#register">Register</a>
+      <a class="btn btn-primary" href="#register">Register Now</a>
+    </div>
+    <a class="btn btn-primary" href="#register">Register Now</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="khatam" aria-hidden="true"></canvas>
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow">Anjuman-e-Saifee Chicago &nbsp;presents&nbsp; a Business Expo</p>
+      <p class="hero-arabic">Where Mumineen businesses meet, grow &amp; thrive</p>
+    </div>
+
+    <h1>The Biz Connect <em>Showcase</em></h1>
+
+    <p class="hero-lede">Entrepreneurs, business owners, manufacturers, retailers, innovators, startups and investors from across the community — three days to connect, collaborate and grow, under one roof in Chicagoland.</p>
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="k"><svg class="ic" aria-hidden="true"><use href="#i-calendar"></use></svg>Dates</span>
+        <span class="v">4&ndash;6 December 2026<small>25&ndash;27 Jumadal Ukhra 1448</small></span>
+      </div>
+      <div class="meta-item">
+        <span class="k"><svg class="ic" aria-hidden="true"><use href="#i-pin"></use></svg>Venue</span>
+        <span class="v">Compass Arena<small>Willowbrook, Illinois</small></span>
+      </div>
+      <div class="meta-item">
+        <span class="k"><svg class="ic" aria-hidden="true"><use href="#i-building"></use></svg>Presented by</span>
+        <span class="v">Anjuman-e-Saifee<small>Chicago</small></span>
+      </div>
+    </div>
+
+    <div class="countdown" id="countdown" aria-label="Countdown to the showcase">
+      <div class="cd-cell"><div class="cd-num" id="cdD">—</div><div class="cd-lbl">Days</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cdH">—</div><div class="cd-lbl">Hours</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cdM">—</div><div class="cd-lbl">Minutes</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cdS">—</div><div class="cd-lbl">Seconds</div></div>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#register">Complete your registration<svg class="ic" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+      <a class="btn btn-outline-gold" href="#about">Read the vision<svg class="ic" aria-hidden="true"><use href="#i-arrow-down"></use></svg></a>
+    </div>
+  </div>
+</header>
+
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">The Vision</p>
+      <h2>Business runs in our veins</h2>
+    </div>
+    <div class="vision">
+      <figure class="quote rv">
+        <blockquote>&ldquo;Business is a defining characteristic of the Dawoodi Bohra community. Business comes instinctively to Mumineen — it runs in their veins, just as the muhabbat of Awliya Allah AS does.&rdquo;</blockquote>
+        <figcaption>From the Mawaaiz Nooraniyah of Aqa Moula (TUS) on <em>Tijaarat Hunar</em>, delivered during Ashara Mubarak.</figcaption>
+      </figure>
+      <div class="vision-body rv">
+        <p>Inspired by this guidance, and with the <strong>Dua Mubarak of Aqa Moula (TUS)</strong>, Anjuman-e-Saifee Chicago and Al-Tijaarat al-Raabehah Chicago present a premier three-day Business &amp; Innovation Showcase.</p>
+        <p>The Biz Connect Showcase brings together entrepreneurs, business owners, professionals, manufacturers, retailers, innovators, startups, investors and aspiring leaders — to <strong>connect, collaborate and grow</strong>.</p>
+        <p>More than an exhibition, it is a platform to exchange ideas, discover opportunities, build lasting partnerships and strengthen the economic future of our community.</p>
+        <p>Three days of keynotes, working sessions, a full exhibition floor and deliberate networking, hosted at the spectacular Compass Arena in Willowbrook, Illinois. A state-of-the-art venue, and the right setting for business that starts as conversation and ends as partnership.</p>
+        <p><strong>Registration is open.</strong> Complete your registration today and be part of a gathering where businesses connect, collaborate and thrive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="who">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Who Attends</p>
+      <h2>Every seat at the table</h2>
+      <p>From a first-year startup to a third-generation manufacturer — the showcase is built so that everyone in the room has something to offer and something to take away.</p>
+    </div>
+    <div class="chips rv">
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"></use></svg>Entrepreneurs</span>
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-briefcase"></use></svg>Business owners</span>
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-user"></use></svg>Professionals</span>
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-factory"></use></svg>Manufacturers</span>
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-store"></use></svg>Retailers &amp; wholesalers</span>
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-bolt"></use></svg>Innovators</span>
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-rocket"></use></svg>Startups</span>
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-chart"></use></svg>Investors</span>
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-star"></use></svg>Aspiring leaders</span>
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-wrench"></use></svg>Service providers</span>
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-home"></use></svg>Family businesses</span>
+      <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-cap"></use></svg>Students &amp; first-timers</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Why take part</p>
+      <h2>Great businesses are not built alone</h2>
+      <p>They are built through vision, collaboration and meaningful relationships. Three days in one room is enough time to start all three.</p>
+    </div>
+    <div class="cols">
+      <div class="card rv">
+        <span class="card-ic"><svg class="ic ic-lg" aria-hidden="true"><use href="#i-users"></use></svg></span>
+        <p class="eyebrow">For Attendees</p>
+        <h3>Why attend</h3>
+        <ul class="tick">
+          <li>Hear from leaders who have built businesses within and beyond the community.</li>
+          <li>Find the trends, tools and technology reshaping your sector before your competition does.</li>
+          <li>Build relationships that outlast the weekend — suppliers, partners, mentors, customers.</li>
+          <li>Walk the exhibition floor and see what Mumineen across North America are making and selling.</li>
+          <li>Bring a specific problem; leave with people who have already solved it.</li>
+          <li>Open doors for the next generation entering business.</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <span class="card-ic"><svg class="ic ic-lg" aria-hidden="true"><use href="#i-store"></use></svg></span>
+        <p class="eyebrow">For Exhibitors</p>
+        <h3>Why exhibit</h3>
+        <ul class="tick">
+          <li>Put your product in front of decision-makers who buy, distribute and refer.</li>
+          <li>Generate qualified leads across three days of concentrated footfall.</li>
+          <li>Launch or demonstrate something new to an audience primed to look.</li>
+          <li>Meet distributors, retailers and manufacturers you would otherwise cold-email.</li>
+          <li>Build brand recognition across the North American Bohra business community.</li>
+          <li>Sit alongside businesses at every stage — and learn from the floor as much as you sell on it.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="programme">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Programme</p>
+      <h2>Three days of inspiration, innovation &amp; opportunity</h2>
+      <p>Each day has its own job. Day one builds the room, day two puts the businesses in front of it, day three turns all of it into what comes next.</p>
+    </div>
+    <div class="days rv">
+      <article class="day">
+        <div class="day-no">01</div>
+        <div class="day-body">
+          <h3>Orientation<span class="day-theme">Welcome</span></h3>
+          <p class="day-date">Friday 4 December &nbsp;·&nbsp; 25 Jumadal Ukhra &nbsp;·&nbsp; from 5:00 pm</p>
+          <p class="day-focus">Network &bull; Build Relationships</p>
+          <ul class="day-list">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-mic"></use></svg><span>Opening Ceremony &amp; Keynote Address</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-users"></use></svg><span>Business Reception Darees</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-building"></use></svg><span>Exhibitors &amp; Industry Leaders Intro</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-utensils"></use></svg><span>Dinner &amp; Relationship Building</span></li>
+          </ul>
+        </div>
+      </article>
+      <article class="day">
+        <div class="day-no">02</div>
+        <div class="day-body">
+          <h3>Discover<span class="day-theme">Explore</span></h3>
+          <p class="day-date">Saturday 5 December &nbsp;·&nbsp; 26 Jumadal Ukhra</p>
+          <p class="day-focus">Learn &bull; Explore &bull; Collaborate</p>
+          <ul class="day-list">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-store"></use></svg><span>Business Expo &amp; Product Showcase</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-panel"></use></svg><span>Expert Speakers &amp; Industry Panels</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-factory"></use></svg><span>Manufacturing Pavilion</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-play"></use></svg><span>Live Demonstrations</span></li>
+          </ul>
+        </div>
+      </article>
+      <article class="day">
+        <div class="day-no">03</div>
+        <div class="day-body">
+          <h3>Grow<span class="day-theme">Thrive</span></h3>
+          <p class="day-date">Sunday 6 December &nbsp;·&nbsp; 27 Jumadal Ukhra</p>
+          <p class="day-focus">Lead &bull; Innovate &bull; Thrive</p>
+          <ul class="day-list">
+            <li><svg class="ic" aria-hidden="true"><use href="#i-rocket"></use></svg><span>Startup &amp; Innovation Spotlight</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-chart"></use></svg><span>Leadership &amp; Business Growth Sessions</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-mic"></use></svg><span>Closing Keynote</span></li>
+            <li><svg class="ic" aria-hidden="true"><use href="#i-award"></use></svg><span>Recognition Ceremony &amp; Final Networking</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <p class="draft-note">Session titles, speakers and exact timings will be confirmed closer to the event.</p>
+  </div>
+</section>
+
+<section class="sec" id="passes">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Registration</p>
+      <h2>Choose how you take part</h2>
+      <p>All registrations are handled through a single form. Tell us which way you are joining and we will follow up with the details for your pass.</p>
+    </div>
+    <div class="passes">
+      <div class="pass rv">
+        <span class="card-ic"><svg class="ic ic-lg" aria-hidden="true"><use href="#i-ticket"></use></svg></span>
+        <h3>Attendee</h3>
+        <div class="price">Rates announced soon<small>Early-bird rate to follow</small></div>
+        <ul class="tick">
+          <li>Full three-day access to keynotes, panels and sessions</li>
+          <li>Entry to the exhibition floor across all three days</li>
+          <li>Business Reception Darees, dinner and networking on day one</li>
+          <li>Attendee badge and event materials</li>
+        </ul>
+        <a class="btn btn-primary" href="#register"><svg class="ic" aria-hidden="true"><use href="#i-ticket"></use></svg>Register as an attendee</a>
+      </div>
+      <div class="pass feature rv">
+        <span class="card-ic"><svg class="ic ic-lg" aria-hidden="true"><use href="#i-store"></use></svg></span>
+        <p class="eyebrow">Most enquiries</p>
+        <h3>Exhibitor</h3>
+        <div class="price">Rates announced soon<small>Per booth &middot; limited spaces</small></div>
+        <ul class="tick">
+          <li>Booth space in the Business Expo &amp; Product Showcase</li>
+          <li>Listing in the event directory and on this site</li>
+          <li>Attendee access for your booth team</li>
+          <li>A place in the Manufacturing Pavilion or live demonstrations, by sector</li>
+          <li>Introduction from the stage during the Exhibitors &amp; Industry Leaders session</li>
+        </ul>
+        <a class="btn btn-primary" href="#register"><svg class="ic" aria-hidden="true"><use href="#i-store"></use></svg>Enquire about a booth</a>
+      </div>
+      <div class="pass rv">
+        <span class="card-ic"><svg class="ic ic-lg" aria-hidden="true"><use href="#i-star"></use></svg></span>
+        <h3>Sponsor</h3>
+        <div class="price">Tiers on request<small>Speak with the committee</small></div>
+        <ul class="tick">
+          <li>Brand presence across the venue and event collateral</li>
+          <li>Speaking or session-hosting opportunities by tier</li>
+          <li>Premium floor placement</li>
+          <li>Recognition in the closing session</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact"><svg class="ic" aria-hidden="true"><use href="#i-mail"></use></svg>Talk to the committee</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec alt" id="register">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow"><svg class="ic" aria-hidden="true"><use href="#i-edit"></use></svg>Complete your registration</p>
+      <h2>Register for the showcase</h2>
+      <p>One form for attendees and exhibitors &mdash; choose which on the final question. It takes about three minutes.</p>
+    </div>
+    <div class="form-shell rv">
+      <div class="form-note">
+        <span><svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg>Have your <strong>ITS number</strong> and <strong>Jamaat</strong> to hand</span>
+        <span><svg class="ic" aria-hidden="true"><use href="#i-clock"></use></svg>About 3 minutes</span>
+        <span><svg class="ic" aria-hidden="true"><use href="#i-mail"></use></svg>Confirmation sent by email</span>
+      </div>
+      <div class="form-frame">
+        <iframe
+          id="jotform"
+          title="The Biz Connect Showcase 2026 registration form"
+          src="https://form.jotform.com/261984324758066"
+          loading="lazy"
+          allow="geolocation; microphone; camera"></iframe>
+      </div>
+      <p class="form-fallback">
+        <span>Form not loading? It opens fine in its own tab.</span>
+        <a href="https://form.jotform.com/261984324758066" target="_blank" rel="noopener">Open the registration form<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="venue">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">The Venue</p>
+      <h2>Compass Arena, Willowbrook</h2>
+      <p>A state-of-the-art arena and dining destination in Chicagoland&mdash;open floor for the expo, rooms for sessions, and space to keep talking once the sessions end.</p>
+    </div>
+    <div class="venue">
+      <div class="rv">
+        <ul class="venue-facts">
+          <li><b><svg class="ic" aria-hidden="true"><use href="#i-pin"></use></svg>Address</b><span>625 Joliet Road, Willowbrook, Illinois 60527</span></li>
+          <li><b><svg class="ic" aria-hidden="true"><use href="#i-plane"></use></svg>Getting there</b><span>Roughly 25&ndash;30 minutes from Chicago Midway (MDW) and about 40 minutes from O&rsquo;Hare (ORD), traffic permitting.</span></li>
+          <li><b><svg class="ic" aria-hidden="true"><use href="#i-car"></use></svg>Parking</b><span>On-site parking available for attendees and exhibitors.</span></li>
+          <li><b><svg class="ic" aria-hidden="true"><use href="#i-bed"></use></svg>Hotels</b><span>Hotel details will be shared with registered attendees closer to the event.</span></li>
+        </ul>
+      </div>
+      <figure class="venue-art rv">
+        <canvas id="venueCanvas" aria-label="Decorative geometric pattern"></canvas>
+        <figcaption>625 Joliet Road &nbsp;·&nbsp; Willowbrook, IL</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="sponsor">
+  <div class="wrap band-in">
+    <div class="rv">
+      <p class="eyebrow">Sponsorship</p>
+      <h2>Will you just be watching from the sidelines?</h2>
+      <p>Sponsorship packages are open for businesses that want visibility across all three days &mdash; tiers, placements and speaking opportunities on request. Or take a booth and put your product in the room.</p>
+    </div>
+    <div class="band-cta rv">
+      <a class="btn btn-gold" href="#contact"><svg class="ic" aria-hidden="true"><use href="#i-mail"></use></svg>Request the sponsorship pack</a>
+      <a class="btn btn-outline-gold" href="#register">Register<svg class="ic" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Questions</p>
+      <h2>Before you register</h2>
+    </div>
+    <div class="faq rv">
+      <details open>
+        <summary>Who is this showcase for?</summary>
+        <p>Anyone doing business or preparing to. Established owners, professionals, manufacturers and retailers will find buyers and partners; startups, students and first-time founders will find mentors and a first audience. You do not need a booth to get value from the three days.</p>
+      </details>
+      <details>
+        <summary>How do I register?</summary>
+        <p>Registration runs through a single form covering both attendees and exhibitors — you choose which on the last question. Have your <strong>ITS number</strong> and <strong>Jamaat</strong> to hand, along with your industry and business name. The committee will follow up with the details for your pass, including payment once rates are confirmed.</p>
+      </details>
+      <details>
+        <summary>Can I attend for only one day?</summary>
+        <p>The programme is designed to build across the three days, and passes are being planned around full attendance. If a single day is your only option, note it on the registration form and the committee will come back to you.</p>
+      </details>
+      <details>
+        <summary>What does an exhibitor booth include?</summary>
+        <p>Booth space in the Business Expo &amp; Product Showcase, a directory listing, attendee access for your booth team, and an introduction during the Exhibitors &amp; Industry Leaders session on day one. Booth sizes, layouts and rates are being finalised — register and select <em>Exhibitor</em> to be first in line.</p>
+      </details>
+      <details>
+        <summary>Is food available at the venue?</summary>
+        <p>Compass Arena is a combined arena and dining venue. Catering arrangements for the showcase will be confirmed and shared with registered attendees ahead of the event.</p>
+      </details>
+      <details>
+        <summary>I want to sponsor or speak. Who do I contact?</summary>
+        <p>Reach out through the contact details below and the organising committee will send the sponsorship pack and speaking guidelines.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="mark" href="#top" style="margin-right:0">
+          <svg class="mark-glyph" viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M50 4 61 28 85 15 76 41 100 50 76 59 85 85 61 72 50 96 39 72 15 85 24 59 0 50 24 41 15 15 39 28Z"
+                  fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+          </svg>
+          <span class="mark-txt"><b>Biz Connect</b><span>Chicago 2026</span></span>
+        </a>
+        <p class="foot-lede">An exclusive Business Expo presented by Anjuman-e-Saifee Chicago with Al-Tijaarat al-Raabehah Chicago, with the Dua Mubarak of Aqa Moula (TUS).</p>
+      </div>
+      <div>
+        <h4>Event</h4>
+        <a href="#about">About</a>
+        <a href="#who">Who attends</a>
+        <a href="#programme">Programme</a>
+        <a href="#venue">Venue</a>
+      </div>
+      <div>
+        <h4>Take part</h4>
+        <a href="#register">Register now</a>
+        <a href="#passes">Exhibit</a>
+        <a href="#sponsor">Sponsor</a>
+        <!-- TODO: replace with the committee's real contact address -->
+        <a href="mailto:info@bizconnectchicago.com">Contact the committee</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>4&ndash;6 December 2026 &nbsp;·&nbsp; 25&ndash;27 Jumadal Ukhra 1448</span>
+      <span>Compass Arena, 625 Joliet Road, Willowbrook, IL 60527</span>
+      <span>&copy; 2026 Anjuman-e-Saifee Chicago</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- mobile nav ---------- */
+  var toggle = document.getElementById("navToggle");
+  var links = document.getElementById("navLinks");
+  toggle.addEventListener("click", function () {
+    var open = links.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.textContent = open ? "Close" : "Menu";
+  });
+  links.addEventListener("click", function (e) {
+    if (e.target.tagName === "A" && links.classList.contains("open")) {
+      links.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.textContent = "Menu";
+    }
+  });
+
+  /* ---------- countdown to 4 Dec 2026, 09:00 America/Chicago (UTC-6) ---------- */
+  var target = Date.parse("2026-12-04T09:00:00-06:00");
+  var cd = { d: document.getElementById("cdD"), h: document.getElementById("cdH"),
+             m: document.getElementById("cdM"), s: document.getElementById("cdS") };
+  function pad(n) { return n < 10 ? "0" + n : String(n); }
+  function tickClock() {
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      cd.d.textContent = "00"; cd.h.textContent = "00";
+      cd.m.textContent = "00"; cd.s.textContent = "00";
+      return;
+    }
+    var s = Math.floor(diff / 1000);
+    cd.d.textContent = pad(Math.floor(s / 86400));
+    cd.h.textContent = pad(Math.floor(s / 3600) % 24);
+    cd.m.textContent = pad(Math.floor(s / 60) % 60);
+    cd.s.textContent = pad(s % 60);
+  }
+  tickClock();
+  setInterval(tickClock, 1000);
+
+  /* ---------- khatam (eight-point star) tessellation ---------- */
+  function starPath(ctx, cx, cy, R) {
+    var r = R * 0.4142, i, ang, rad;
+    ctx.beginPath();
+    for (i = 0; i < 16; i++) {
+      ang = (Math.PI / 8) * i - Math.PI / 2;
+      rad = (i % 2 === 0) ? R : r;
+      var x = cx + Math.cos(ang) * rad;
+      var y = cy + Math.sin(ang) * rad;
+      if (i === 0) { ctx.moveTo(x, y); } else { ctx.lineTo(x, y); }
+    }
+    ctx.closePath();
+  }
+
+  function makePattern(canvas, opts) {
+    var ctx = canvas.getContext("2d");
+    var tile = opts.tile, drift = opts.drift, w = 0, h = 0, dpr = 1;
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = canvas.clientWidth; h = canvas.clientHeight;
+      canvas.width = Math.max(1, Math.round(w * dpr));
+      canvas.height = Math.max(1, Math.round(h * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function draw(off) {
+      ctx.clearRect(0, 0, w, h);
+      ctx.lineWidth = opts.lineWidth;
+      var ox = -tile + (off % tile);
+      var oy = -tile + ((off * 0.55) % tile);
+      var cols = Math.ceil(w / tile) + 2;
+      var rows = Math.ceil(h / tile) + 2;
+      for (var cx = 0; cx < cols; cx++) {
+        for (var cy = 0; cy < rows; cy++) {
+          var x = ox + cx * tile + tile / 2;
+          var y = oy + cy * tile + tile / 2;
+          var odd = (cx + cy) % 2 === 0;
+          ctx.strokeStyle = odd ? opts.colorA : opts.colorB;
+          starPath(ctx, x, y, tile * 0.44);
+          ctx.stroke();
+          if (odd) {
+            ctx.beginPath();
+            ctx.rect(x - tile * 0.17, y - tile * 0.17, tile * 0.34, tile * 0.34);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    resize();
+    if (reduce || !drift) {
+      draw(0);
+    } else {
+      var start = null;
+      (function loop(ts) {
+        if (start === null) { start = ts; }
+        draw(((ts - start) / 1000) * drift);
+        requestAnimationFrame(loop);
+      })(0);
+    }
+    window.addEventListener("resize", function () {
+      resize();
+      if (reduce || !drift) { draw(0); }
+    });
+  }
+
+  makePattern(document.getElementById("khatam"), {
+    tile: 132, drift: 5, lineWidth: 1,
+    colorA: "rgba(227,190,99,0.30)", colorB: "rgba(194,153,238,0.20)"
+  });
+  makePattern(document.getElementById("venueCanvas"), {
+    tile: 74, drift: 0, lineWidth: 1,
+    colorA: "rgba(227,190,99,0.42)", colorB: "rgba(194,153,238,0.26)"
+  });
+
+  /* ---------- scroll reveal ---------- */
+  var items = document.querySelectorAll(".rv");
+  if (reduce || !("IntersectionObserver" in window)) {
+    items.forEach(function (el) { el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    items.forEach(function (el, i) {
+      el.style.transitionDelay = (Math.min(i % 3, 2) * 80) + "ms";
+      io.observe(el);
+    });
+  }
+})();
+</script>
