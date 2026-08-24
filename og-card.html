@@ -1,0 +1,64 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Marcellus&display=swap">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  body{
+    background:radial-gradient(120% 95% at 78% 4%, #2A1140 0%, transparent 62%), #150C1D;
+    font-family:"Archivo",sans-serif;position:relative;
+  }
+  canvas{position:absolute;inset:0;width:1200px;height:630px;opacity:.5}
+  .veil{position:absolute;inset:0;background:linear-gradient(105deg,rgba(21,12,29,.92) 0%,rgba(21,12,29,.72) 52%,rgba(21,12,29,.45) 100%)}
+  .card{position:absolute;inset:0;padding:64px 72px;display:flex;flex-direction:column;justify-content:space-between}
+  .top{display:flex;align-items:center;gap:18px}
+  .star{width:44px;height:44px;flex:none}
+  .brandline{font-size:15px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:#E3BE63;line-height:1.5}
+  h1{font-family:"Marcellus",serif;font-weight:400;font-size:104px;line-height:.94;color:#F6F0FA;letter-spacing:-.015em}
+  h1 em{font-style:normal;color:#E3BE63;display:block}
+  .tag{font-family:"Marcellus",serif;font-style:italic;font-size:28px;color:#E3BE63;letter-spacing:.03em;margin-top:22px}
+  .rule{height:1px;background:rgba(227,190,99,.34);margin-bottom:26px}
+  .facts{display:flex;gap:56px}
+  .f{display:flex;flex-direction:column;gap:6px}
+  .k{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#E3BE63;font-weight:700}
+  .v{font-family:"Marcellus",serif;font-size:26px;color:#F6F0FA;line-height:1.2}
+  .v small{display:block;font-family:"Archivo",sans-serif;font-size:14px;color:#C0AACF;margin-top:4px;letter-spacing:.01em}
+</style></head>
+<body>
+<canvas id="k" width="1200" height="630"></canvas>
+<div class="veil"></div>
+<div class="card">
+  <div>
+    <div class="top">
+      <svg class="star" viewBox="0 0 100 100"><path d="M50 4 61 28 85 15 76 41 100 50 76 59 85 85 61 72 50 96 39 72 15 85 24 59 0 50 24 41 15 15 39 28Z" fill="none" stroke="#E3BE63" stroke-width="5" stroke-linejoin="round"/></svg>
+      <div class="brandline">Anjuman-e-Saifee Chicago presents<br>an exclusive Business Expo</div>
+    </div>
+    <div class="tag">Where Mumineen businesses meet, grow &amp; thrive</div>
+  </div>
+  <div>
+    <h1>The Biz Connect<em>Showcase</em></h1>
+  </div>
+  <div>
+    <div class="rule"></div>
+    <div class="facts">
+      <div class="f"><span class="k">Dates</span><span class="v">4&ndash;6 December 2026<small>25&ndash;27 Jumadal Ukhra 1448</small></span></div>
+      <div class="f"><span class="k">Venue</span><span class="v">Compass Arena<small>Willowbrook, Illinois</small></span></div>
+      <div class="f"><span class="k">Register</span><span class="v">Now open<small>Attendees &amp; exhibitors</small></span></div>
+    </div>
+  </div>
+</div>
+<script>
+var ctx=document.getElementById('k').getContext('2d');
+function star(cx,cy,R){var r=R*0.4142;ctx.beginPath();
+  for(var i=0;i<16;i++){var a=(Math.PI/8)*i-Math.PI/2,rad=(i%2===0)?R:r;
+    var x=cx+Math.cos(a)*rad,y=cy+Math.sin(a)*rad;i?ctx.lineTo(x,y):ctx.moveTo(x,y);}
+  ctx.closePath();}
+var t=132;ctx.lineWidth=1;
+for(var cx=0;cx<12;cx++)for(var cy=0;cy<7;cy++){
+  var x=cx*t+t/2,y=cy*t+t/2,odd=(cx+cy)%2===0;
+  ctx.strokeStyle=odd?'rgba(227,190,99,0.34)':'rgba(194,153,238,0.22)';
+  star(x,y,t*0.44);ctx.stroke();
+  if(odd){ctx.beginPath();ctx.rect(x-t*0.17,y-t*0.17,t*0.34,t*0.34);ctx.stroke();}
+}
+</script>
+</body></html>
