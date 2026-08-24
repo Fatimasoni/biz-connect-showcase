@@ -325,13 +325,36 @@ section{scroll-margin-top:78px}
 .venue-facts li{display:grid;grid-template-columns:9rem 1fr;gap:1rem;padding-block:.85rem;border-top:1px solid var(--rule);font-size:.93rem;color:var(--ink-2)}
 .venue-facts li:last-child{border-bottom:1px solid var(--rule)}
 .venue-facts b{font-weight:600;color:var(--ink-3);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;padding-top:.2rem}
-.venue-art{aspect-ratio:4/3;width:100%;border:1px solid var(--rule);background:var(--plum-deep);position:relative;overflow:hidden}
-#venueCanvas{position:absolute;inset:0;width:100%;height:100%}
-.venue-art figcaption{
-  position:absolute;left:0;right:0;bottom:0;padding:1rem 1.2rem;color:#EDE2F5;
-  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
-  background:linear-gradient(180deg,transparent,rgba(21,12,29,.85));
+.venue-gallery{display:grid;gap:.9rem}
+.venue-strip{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:.9rem}
+@media (max-width:560px){.venue-strip{grid-template-columns:1fr}}
+
+.shot{
+  position:relative;margin:0;overflow:hidden;
+  border:1px solid var(--rule);background-color:var(--plum-deep);
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27264%27%20height%3D%27264%27%20viewBox%3D%270%200%20264%20264%27%3E%3Cg%20fill%3D%27none%27%20stroke-width%3D%271%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M66.0%207.9%2075.2%2043.8%20107.1%2024.9%2088.2%2056.8%20124.1%2066.0%2088.2%2075.2%20107.1%20107.1%2075.2%2088.2%2066.0%20124.1%2056.8%2088.2%2024.9%20107.1%2043.8%2075.2%207.9%2066.0%2043.8%2056.8%2024.9%2024.9%2056.8%2043.8Z%27%20stroke%3D%27rgba%28227%2C190%2C99%2C0.30%29%27%2F%3E%3Cpath%20d%3D%27M43.6%2043.6%20h44.9%20v44.9%20h-44.9%20Z%27%20stroke%3D%27rgba%28227%2C190%2C99%2C0.30%29%27%2F%3E%3Cpath%20d%3D%27M198.0%20139.9%20207.2%20175.8%20239.1%20156.9%20220.2%20188.8%20256.1%20198.0%20220.2%20207.2%20239.1%20239.1%20207.2%20220.2%20198.0%20256.1%20188.8%20220.2%20156.9%20239.1%20175.8%20207.2%20139.9%20198.0%20175.8%20188.8%20156.9%20156.9%20188.8%20175.8Z%27%20stroke%3D%27rgba%28194%2C153%2C238%2C0.20%29%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-position:center;
 }
+.shot.primary{aspect-ratio:4/3}
+.shot.small{aspect-ratio:3/2}
+.shot img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  background:var(--plum-deep);
+}
+.shot img[hidden]{display:none}
+.shot figcaption{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;padding:.85rem 1rem;
+  color:#EDE2F5;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  background:linear-gradient(180deg,transparent,rgba(21,12,29,.88));
+}
+.shot .pending{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.55rem;text-align:center;padding:1.2rem;color:#C0AACF;
+}
+.shot .pending .ic{width:1.5rem;height:1.5rem;color:#E3BE63;stroke-width:1.4}
+.shot .pending b{font-family:"Marcellus",serif;font-weight:400;font-size:1rem;color:#EDE2F5}
+.shot .pending span{font-size:.74rem;line-height:1.45;max-width:26ch}
+.shot img:not([hidden]) ~ .pending{display:none}
 
 /* ---------- sponsor band ---------- */
 .band{background:var(--plum-deep);color:#F3EBF8;border-block:1px solid var(--gold-line)}
@@ -729,9 +752,39 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
           <li><b><svg class="ic" aria-hidden="true"><use href="#i-bed"></use></svg>Hotels</b><span>Hotel details will be shared with registered attendees closer to the event.</span></li>
         </ul>
       </div>
-      <figure class="venue-art rv">
-        <canvas id="venueCanvas" aria-label="Decorative geometric pattern"></canvas>
-        <figcaption>625 Joliet Road &nbsp;·&nbsp; Willowbrook, IL</figcaption>
+      <div class="venue-gallery rv">
+        <figure class="shot primary">
+          <img src="img/venue-exterior.jpg" alt="The exterior of Compass Arena in Willowbrook, Illinois" loading="lazy" onerror="this.hidden=true">
+          <div class="pending">
+            <svg class="ic" aria-hidden="true"><use href="#i-building"></use></svg>
+            <b>Exterior</b>
+            <span>Photograph to come</span>
+            <!-- drop the image at img/venue-exterior.jpg to replace this panel -->
+          </div>
+          <figcaption>625 Joliet Road &nbsp;&middot;&nbsp; Willowbrook, IL</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="venue-strip rv">
+      <figure class="shot small">
+        <img src="img/venue-floor.jpg" alt="The main arena floor at Compass Arena, where the Business Expo will be held" loading="lazy" onerror="this.hidden=true">
+        <div class="pending">
+          <svg class="ic" aria-hidden="true"><use href="#i-store"></use></svg>
+          <b>Expo floor</b>
+          <span>Photograph to come</span>
+            <!-- drop the image at img/venue-floor.jpg to replace this panel -->
+        </div>
+        <figcaption>The expo floor</figcaption>
+      </figure>
+      <figure class="shot small">
+        <img src="img/venue-dining.jpg" alt="The dining area at Compass Arena" loading="lazy" onerror="this.hidden=true">
+        <div class="pending">
+          <svg class="ic" aria-hidden="true"><use href="#i-utensils"></use></svg>
+          <b>Dining</b>
+          <span>Photograph to come</span>
+            <!-- drop the image at img/venue-dining.jpg to replace this panel -->
+        </div>
+        <figcaption>Dining &amp; reception</figcaption>
       </figure>
     </div>
   </div>
@@ -956,10 +1009,6 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
   makePattern(document.getElementById("khatam"), {
     tile: 132, drift: 5, lineWidth: 1,
     colorA: "rgba(227,190,99,0.30)", colorB: "rgba(194,153,238,0.20)"
-  });
-  makePattern(document.getElementById("venueCanvas"), {
-    tile: 74, drift: 0, lineWidth: 1,
-    colorA: "rgba(227,190,99,0.42)", colorB: "rgba(194,153,238,0.26)"
   });
 
   /* ---------- scroll reveal ---------- */
