@@ -23,6 +23,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Marcellus&display=swap">
+<script>
+(function(){try{
+  var t=localStorage.getItem('bcs-theme');
+  document.documentElement.setAttribute('data-theme', t==='dark'?'dark':'light');
+}catch(e){document.documentElement.setAttribute('data-theme','light');}})();
+</script>
 <style>
 /* ---------- tokens : light (default, un-stamped) ---------- */
 :root{
@@ -53,25 +59,7 @@
   --maxw:1120px;
   --step:clamp(3.5rem, 7vw, 6.5rem);
 }
-/* ---------- tokens : dark ---------- */
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --ground:#130B1B;
-    --surface:#1C1226;
-    --surface-2:#261733;
-    --ink:#F2EAF8;
-    --ink-2:#BCA9C9;
-    --ink-3:#9C8AAA;
-    --rule:#33223F;
-    --rule-strong:#4A3359;
-    --violet:#C299EE;
-    --on-violet:#160C1E;
-    --violet-soft:#2A1A3A;
-    --gold:#E0BA5C;
-    --gold-line:#7A5F22;
-    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -18px rgba(0,0,0,.7);
-  }
-}
+/* ---------- tokens : dark (opt-in via the switch only) ---------- */
 :root[data-theme="dark"]{
   --ground:#130B1B;
   --surface:#1C1226;
@@ -149,6 +137,14 @@ img{max-width:100%}
 .btn-outline-gold{border-color:var(--hero-line);color:var(--hero-ink)}
 .btn-outline-gold:hover{border-color:var(--hero-gold);color:var(--hero-gold)}
 .nav-links > .btn-primary{display:none}
+.theme-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:2.3rem;height:2.3rem;flex:none;cursor:pointer;
+  background:none;border:1px solid var(--rule-strong);border-radius:2px;color:var(--ink-2);
+  transition:color .18s,border-color .18s;
+}
+.theme-btn:hover{color:var(--gold);border-color:var(--gold-line)}
+.theme-btn .ic{width:1.05rem;height:1.05rem}
 .nav-toggle{display:none;background:none;border:1px solid var(--rule-strong);border-radius:2px;color:var(--ink);padding:.5rem .7rem;font-size:.8rem;cursor:pointer}
 
 @media (max-width:900px){
@@ -160,6 +156,8 @@ img{max-width:100%}
   .nav-links.open{display:flex}
   .nav-links a:not(.btn){padding-block:.8rem;border-bottom:1px solid var(--rule)}
   .nav-toggle{display:block}
+  .mark{order:-2}
+  .theme-btn{order:-1}
   .nav .btn-primary{display:none}
   .nav-links > .btn-primary{display:inline-flex;justify-content:center;margin-top:.9rem;border-bottom:0}
 }
@@ -418,6 +416,8 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
 <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2.5 9 12 5l9.5 4-9.5 4z"/><path d="M6.8 11v4.4c0 1.4 2.3 2.5 5.2 2.5s5.2-1.1 5.2-2.5V11M21.5 9.2V15"/></symbol>
 <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.4l3.4 2"/></symbol>
 <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.8 4.5 5.8v6c0 4.2 3 8 7.5 9.4 4.5-1.4 7.5-5.2 7.5-9.4v-6z"/><path d="m8.8 12 2.3 2.3 4.1-4.5"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.8A8.6 8.6 0 0 1 9.2 3.8a8.6 8.6 0 1 0 11 11z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M2.4 12h2.2M19.4 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></symbol>
 <symbol id="i-edit" viewBox="0 0 24 24"><path d="M16.5 3.8 20.2 7.5 8.7 19H5v-3.7z"/><path d="M14 6.3 17.7 10M4 22h16"/></symbol>
 </defs>
 </svg>
@@ -446,6 +446,9 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
       <a href="#register">Register</a>
       <a class="btn btn-primary" href="#register">Register Now</a>
     </div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-pressed="false" aria-label="Switch to dark theme" title="Switch to dark theme">
+      <svg class="ic" aria-hidden="true"><use href="#i-moon" id="themeIcon"></use></svg>
+    </button>
     <a class="btn btn-primary" href="#register">Register Now</a>
   </div>
 </nav>
@@ -839,6 +842,27 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
       toggle.setAttribute("aria-expanded", "false");
       toggle.textContent = "Menu";
     }
+  });
+
+  /* ---------- theme switch (light is the default; dark is opt-in) ---------- */
+  var themeBtn = document.getElementById("themeBtn");
+  var themeIcon = document.getElementById("themeIcon");
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+  function paintTheme(mode) {
+    var dark = mode === "dark";
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    themeIcon.setAttribute("href", dark ? "#i-sun" : "#i-moon");
+    themeBtn.setAttribute("aria-pressed", String(dark));
+    var label = dark ? "Switch to light theme" : "Switch to dark theme";
+    themeBtn.setAttribute("aria-label", label);
+    themeBtn.setAttribute("title", label);
+    if (themeMeta) { themeMeta.setAttribute("content", dark ? "#130B1B" : "#FAF6FC"); }
+  }
+  paintTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light");
+  themeBtn.addEventListener("click", function () {
+    var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    paintTheme(next);
+    try { localStorage.setItem("bcs-theme", next); } catch (e) {}
   });
 
   /* ---------- countdown to 4 Dec 2026, 09:00 America/Chicago (UTC-6) ---------- */
