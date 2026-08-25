@@ -1,0 +1,100 @@
+# Changelog
+
+Every change to the site, newest first. Each entry says what changed and
+whether anything is needed at deploy time.
+
+The site is a **single static file** — `index.html` — plus `og.jpg` and the
+contents of `img/`. There is no build step, no dependencies and no server-side
+code. Deploying is a straight file copy.
+
+**Deploy = pull `main` and copy these to the web root:**
+
+    index.html
+    og.jpg
+    img/            (whole folder)
+
+`og-card.html`, `README.md`, `img/README.md` and this file are source/docs only
+and do not need to be served (harmless if they are).
+
+---
+
+## Unreleased
+
+Nothing pending.
+
+---
+
+## 2026-08-24
+
+### Venue photo gallery — `49ce659`
+Replaced the single decorative panel in the venue section with three photo
+slots: a large one beside the venue facts, and two smaller ones below.
+
+**Deploy note:** this adds a new **`img/` folder**. Make sure it is copied to
+the web root or the slots will 404. The folder currently contains only
+`README.md` — no photos yet.
+
+Until a photo exists, each slot shows a patterned placeholder reading
+"Photograph to come". Dropping a correctly named file into `img/` makes it
+appear automatically — no code change:
+
+| File | Slot | Guidance |
+| --- | --- | --- |
+| `venue-exterior.jpg` | Large panel | Landscape 4:3, 1600px+ |
+| `venue-floor.jpg` | Lower left | Landscape 3:2, 1200px+ |
+| `venue-dining.jpg` | Lower right | Landscape 3:2, 1200px+ |
+
+### Light theme by default, opt-in dark switch — `e8959e0`
+Removed the `prefers-color-scheme` media query so the site no longer follows the
+visitor's OS theme. Light is now always the default. Added a moon/sun button in
+the nav that switches to dark and remembers the choice in `localStorage` under
+the key `bcs-theme`.
+
+**Deploy note:** a small inline script now runs in the document head *before*
+the stylesheet, to stamp the theme before first paint. If your pipeline moves,
+defers or minifies scripts, keep that one inline and in place — moving it causes
+a white flash for anyone who has chosen dark.
+
+### WhatsApp / social preview card — `04d4926`
+Added `og.jpg` (1200×630, 133 KB) and the full set of `og:image` tags so links
+preview properly when shared.
+
+**Deploy note:** `og.jpg` must be served from the web root. The card is
+regenerated from `og-card.html` — the command is in `README.md`.
+
+**Action needed on domain change:** three tags hardcode the current host —
+`og:url`, `og:image` and `og:image:secure_url`. When the site moves to its real
+domain these must be updated or link previews will keep pointing at the old
+address.
+
+### Favicon, description and Open Graph tags — `6c9e371`
+Added an inline SVG favicon (data URI, no file), a meta description, and
+Open Graph / Twitter card tags.
+
+### Initial site — `6b815ea`
+First build. Sections: hero with countdown, vision, who attends, why attend /
+why exhibit, three-day programme, passes, embedded registration form, venue,
+sponsorship, FAQ, footer.
+
+**Deploy notes:**
+- The registration section embeds the JotForm at
+  `https://form.jotform.com/261984324758066` in an iframe. The host must allow
+  outbound framing of `form.jotform.com`; JotForm sends no `X-Frame-Options` or
+  `frame-ancestors`, so it embeds fine.
+- Fonts load from Google Fonts (`fonts.googleapis.com`, `fonts.gstatic.com`).
+  Everything else is self-contained.
+- The countdown targets `2026-12-04T09:00:00-06:00`, hardcoded in the script.
+
+---
+
+## Known placeholders
+
+These are wrong on the page today and will change:
+
+- **Contact email** — `info@bizconnectchicago.com` is a placeholder. The domain
+  is unregistered, so mail bounces.
+- **Pricing** — attendee and exhibitor cards both read "Rates announced soon".
+- **Sponsorship tiers** — "Tiers on request".
+- **Venue photos** — all three slots empty.
+- **Logos** — the site has no organisation logos. The nav mark is a generic
+  eight-point star drawn in SVG.
