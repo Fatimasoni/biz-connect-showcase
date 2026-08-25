@@ -1,5 +1,10 @@
 # Changelog
 
+> **Automated notice.** Entries here, and the release emails generated from them,
+> are produced automatically on every push to `main`. Nobody types them
+> individually and no reply is expected. If something needs discussion, contact
+> Fatima directly.
+
 Every change to the site, newest first. Each entry says what changed and
 whether anything is needed at deploy time.
 

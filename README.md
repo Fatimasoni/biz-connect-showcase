@@ -18,3 +18,15 @@ Regenerate it from `og-card.html`:
       --headless=new --window-size=1200,630 --virtual-time-budget=8000 \
       --screenshot=og.png file://$PWD/og-card.html
     sips -s format jpeg -s formatOptions 86 og.png --out og.jpg
+
+## Notification convention
+
+Every GitHub Release cut from this repo **must** end with the standing footer:
+
+> **This is an automated notification.** It is generated on every push/release to
+> `main` — nobody typed it, and no reply is needed. If something here needs
+> discussion, contact Fatima directly rather than replying to this message.
+
+Release notes become the body of the email GitHub sends to anyone watching the
+repo, so the footer is what tells recipients the message is machine-generated.
+Do not omit it.
