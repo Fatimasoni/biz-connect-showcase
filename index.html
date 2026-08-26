@@ -369,10 +369,17 @@ section{scroll-margin-top:78px}
 .place-img .pending{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#C0AACF}
 .place-img .pending .ic{width:1.5rem;height:1.5rem;color:#E3BE63;stroke-width:1.4}
 .place-img img:not([hidden]) ~ .pending{display:none}
-.place-body{display:flex;flex-direction:column;gap:.5rem;padding:1.15rem 1.25rem 1.35rem;flex:1}
+.place-body{display:grid;grid-template-rows:auto auto auto 1fr auto;gap:.5rem;padding:1.15rem 1.25rem 1.35rem;flex:1;align-content:start}
 .place-body h3{font-size:1.16rem;line-height:1.25}
 .place-kind{font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--gold)}
 .place-body p{font-size:.9rem;color:var(--ink-2);flex:1}
+.place-meta{
+  display:block;
+  font-size:.76rem;line-height:1.5;color:var(--ink-3);
+}
+.place-meta .ic{
+  color:var(--gold);width:.9rem;height:.9rem;margin-right:.35em;vertical-align:-.15em;
+}
 .place-link{
   display:inline-flex;align-items:center;gap:.45rem;margin-top:.4rem;align-self:flex-start;
   font-size:.82rem;font-weight:600;color:var(--violet);text-decoration:none;
@@ -917,8 +924,70 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
     </div>
 
     <div class="subhead rv">
-      <h3>Halal dining</h3>
-      <span>Every place listed here is halal</span>
+      <h3>Halal dining near the venue</h3>
+      <span>Willowbrook, Oak Brook and Naperville &mdash; drive times from Compass Arena</span>
+    </div>
+
+    <div class="place-grid rv">
+        <article class="place">
+          <div class="place-body">
+            <p class="place-kind">Levantine</p>
+            <h3>Damascus Falafel</h3>
+            <p class="place-meta"><svg class="ic" aria-hidden="true"><use href="#i-car"></use></svg>approx. 5 min &nbsp;&middot;&nbsp; 10S410 Kingery Hwy, Willowbrook</p>
+            <p>The closest strong option to the arena, right up Route 83. Sit-down Levantine grills and mezze, 4.6 on Zabihah with a high halal rating. Prayer space on request.</p>
+            <a class="place-link" href="https://www.google.com/maps/search/?api=1&query=Damascus%20Falafel%2010S410%20Kingery%20Hwy%2C%20Willowbrook%20IL" target="_blank" rel="noopener">Directions &amp; phone<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <div class="place-body">
+            <p class="place-kind">Middle Eastern</p>
+            <h3>Kabob Q</h3>
+            <p class="place-meta"><svg class="ic" aria-hidden="true"><use href="#i-car"></use></svg>approx. 7 min &nbsp;&middot;&nbsp; 858 75th St, Willowbrook</p>
+            <p>Full-service kebab house a couple of minutes further on 75th. Straightforward, comfortable, and easy for a group after sessions.</p>
+            <a class="place-link" href="https://www.google.com/maps/search/?api=1&query=Kabob%20Q%20858%2075th%20St%2C%20Willowbrook%20IL" target="_blank" rel="noopener">Directions &amp; phone<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <div class="place-body">
+            <p class="place-kind">Mediterranean</p>
+            <h3>Pita Pita Mediterranean Grill</h3>
+            <p class="place-meta"><svg class="ic" aria-hidden="true"><use href="#i-car"></use></svg>approx. 20 min &nbsp;&middot;&nbsp; 376 Route 59, Naperville</p>
+            <p>Sit-down Mediterranean carrying Zabihah's top halal rating and a five-star average. The pick if you want somewhere properly nice for a business dinner.</p>
+            <a class="place-link" href="https://www.google.com/maps/search/?api=1&query=Pita%20Pita%20Mediterranean%20Grill%20376%20Route%2059%2C%20Naperville%20IL" target="_blank" rel="noopener">Directions &amp; phone<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <div class="place-body">
+            <p class="place-kind">Afghan</p>
+            <h3>Afghani Box</h3>
+            <p class="place-meta"><svg class="ic" aria-hidden="true"><use href="#i-car"></use></svg>approx. 18 min &nbsp;&middot;&nbsp; 1220 W Ogden Ave, Naperville</p>
+            <p>Full-service Afghan kitchen — kabuli pulao, mantu, charcoal kebabs. Also top halal rating and five stars.</p>
+            <a class="place-link" href="https://www.google.com/maps/search/?api=1&query=Afghani%20Box%201220%20W%20Ogden%20Ave%2C%20Naperville%20IL" target="_blank" rel="noopener">Directions &amp; phone<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <div class="place-body">
+            <p class="place-kind">Middle Eastern</p>
+            <h3>Pitaville</h3>
+            <p class="place-meta"><svg class="ic" aria-hidden="true"><use href="#i-car"></use></svg>approx. 22 min &nbsp;&middot;&nbsp; 1552 N Aurora Rd, Naperville</p>
+            <p>Larger sit-down room that handles bigger tables well. High halal rating across two dozen reviews.</p>
+            <a class="place-link" href="https://www.google.com/maps/search/?api=1&query=Pitaville%201552%20N%20Aurora%20Rd%2C%20Naperville%20IL" target="_blank" rel="noopener">Directions &amp; phone<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <div class="place-body">
+            <p class="place-kind">Indian &middot; Pakistani</p>
+            <h3>JK Kabab</h3>
+            <p class="place-meta"><svg class="ic" aria-hidden="true"><use href="#i-car"></use></svg>approx. 20 min &nbsp;&middot;&nbsp; 572 Weston Ridge Dr, Naperville</p>
+            <p>The closest thing to familiar desi cooking done as a proper sit-down restaurant rather than a counter.</p>
+            <a class="place-link" href="https://www.google.com/maps/search/?api=1&query=JK%20Kabab%20572%20Weston%20Ridge%20Dr%2C%20Naperville%20IL" target="_blank" rel="noopener">Directions &amp; phone<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+    </div>
+
+    <div class="subhead rv">
+      <h3>Worth the drive into the city</h3>
+      <span>25&ndash;40 minutes from the arena</span>
     </div>
 
     <div class="place-grid rv">
@@ -926,13 +995,13 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
           <div class="place-body">
             <p class="place-kind">Indian &middot; Pakistani</p>
             <h3>Ghareeb Nawaz</h3>
-            <p>A Chicago institution for enormous, inexpensive plates. Listed on Zabihah with its highest halal rating.</p>
+            <p>A Chicago institution &mdash; enormous plates, very cheap, no frills at all. Go for the food and the story, not the room.</p>
             <a class="place-link" href="https://www.zabihah.com/halal-restaurants/chicago-il-us" target="_blank" rel="noopener">Details<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
           </div>
         </article>
         <article class="place">
           <div class="place-body">
-            <p class="place-kind">American &middot; Middle Eastern</p>
+            <p class="place-kind">Middle Eastern</p>
             <h3>Naz's Halal Food</h3>
             <p>Platters, gyros and grills. Also carries Zabihah's highest halal rating.</p>
             <a class="place-link" href="https://www.zabihah.com/halal-restaurants/chicago-il-us" target="_blank" rel="noopener">Details<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
@@ -958,7 +1027,7 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
 
     <div class="notice rv">
       <svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg>
-      <span>For the full picture, <a href="https://www.zabihah.com/halal-restaurants/chicago-il-us" target="_blank" rel="noopener">Zabihah</a> lists over 200 verified halal restaurants across Chicago, each showing whether the meat is zabiha. <strong>Please confirm directly with any restaurant before you go</strong> &mdash; ownership and certification change, and this list is a starting point rather than an endorsement.</span>
+      <span>Every restaurant above is drawn from <a href="https://www.zabihah.com/halal-restaurants/chicago-il-us" target="_blank" rel="noopener">Zabihah</a>, the community-verified halal directory, and none is listed as serving alcohol. Zabihah carries 200+ more across Chicago. <strong>Please still confirm directly before you go</strong> &mdash; ownership and certification change, and this list is a starting point rather than an endorsement. Drive times are approximate.</span>
     </div>
   </div>
 </section>

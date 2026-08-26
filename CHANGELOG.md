@@ -25,6 +25,16 @@ and do not need to be served (harmless if they are).
 
 ## Unreleased
 
+### Halal dining near the venue
+Split the halal list into two groups: six sit-down restaurants within about
+5&ndash;22 minutes of Compass Arena (Willowbrook and Naperville), and the
+existing city options below them. Each near-venue card carries cuisine, drive
+time, street address and a Google Maps link for directions and phone.
+
+All entries are sourced from Zabihah, the community-verified halal directory,
+and none is listed there as serving alcohol. Card layout switched to CSS grid
+rows so titles and links align across a row regardless of address length.
+
 ### Around Chicago section
 New `#chicago` section between the venue and sponsorship band: six things to see
 and do with official booking links, plus a halal dining list.
