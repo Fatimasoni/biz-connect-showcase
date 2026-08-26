@@ -25,7 +25,21 @@ and do not need to be served (harmless if they are).
 
 ## Unreleased
 
-Nothing pending.
+### Around Chicago section
+New `#chicago` section between the venue and sponsorship band: six things to see
+and do with official booking links, plus a halal dining list.
+
+**Deploy note:** adds six more image slots in `img/` —
+`chicago-artinstitute.jpg`, `chicago-skydeck.jpg`, `chicago-rivercruise.jpg`,
+`chicago-millennium.jpg`, `chicago-msi.jpg`, `chicago-navypier.jpg`. All show
+patterned placeholders until supplied. Filenames and licensing guidance are in
+`img/README.md`.
+
+**Also in this change:** the nav gained an item and started wrapping at ~1024px,
+so nav elements are now `white-space: nowrap`, the duplicate "Register" text link
+was removed (the button covers it), and the mobile breakpoint moved from 900px to
+1040px.
+
 
 ---
 

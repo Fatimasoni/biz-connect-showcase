@@ -113,10 +113,11 @@ img{max-width:100%}
 .mark{display:flex;align-items:center;gap:.7rem;text-decoration:none;margin-right:auto}
 .mark-glyph{width:30px;height:30px;flex:none;color:var(--violet)}
 .mark-txt{display:flex;flex-direction:column;line-height:1.05}
-.mark-txt b{font-family:"Marcellus",serif;font-weight:400;font-size:1.02rem;letter-spacing:.02em}
-.mark-txt span{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
-.nav-links{display:flex;gap:1.6rem;align-items:center}
+.mark-txt b{font-family:"Marcellus",serif;font-weight:400;font-size:1.02rem;letter-spacing:.02em;white-space:nowrap}
+.mark-txt span{white-space:nowrap;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.nav-links{display:flex;gap:1.35rem;align-items:center}
 .nav-links a:not(.btn){
+  white-space:nowrap;
   text-decoration:none;font-size:.88rem;font-weight:500;color:var(--ink-2);
   padding-block:.35rem;border-bottom:1px solid transparent;transition:color .18s,border-color .18s;
 }
@@ -124,7 +125,7 @@ img{max-width:100%}
 .btn{
   display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;
   font-family:"Archivo",sans-serif;font-size:.86rem;font-weight:600;letter-spacing:.02em;
-  padding:.72rem 1.35rem;border-radius:2px;border:1px solid transparent;
+  padding:.72rem 1.35rem;border-radius:2px;border:1px solid transparent;white-space:nowrap;
   transition:transform .16s ease, background .16s, color .16s, border-color .16s;
 }
 .btn:active{transform:translateY(1px)}
@@ -147,7 +148,7 @@ img{max-width:100%}
 .theme-btn .ic{width:1.05rem;height:1.05rem}
 .nav-toggle{display:none;background:none;border:1px solid var(--rule-strong);border-radius:2px;color:var(--ink);padding:.5rem .7rem;font-size:.8rem;cursor:pointer}
 
-@media (max-width:900px){
+@media (max-width:1040px){
   .nav-links{
     position:absolute;top:70px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;
     background:var(--surface);border-bottom:1px solid var(--rule);padding:.5rem 1.25rem 1.1rem;
@@ -280,7 +281,7 @@ section{scroll-margin-top:78px}
 
 /* ---------- passes ---------- */
 .passes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-@media (max-width:900px){.passes{grid-template-columns:1fr}}
+@media (max-width:1040px){.passes{grid-template-columns:1fr}}
 .pass{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--rule);padding:clamp(1.5rem,3vw,2rem);box-shadow:var(--shadow)}
 .pass.feature{border-color:var(--gold-line);box-shadow:0 0 0 1px var(--gold-line), var(--shadow)}
 .pass h3{font-size:1.55rem}
@@ -329,7 +330,8 @@ section{scroll-margin-top:78px}
 .venue-strip{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:.9rem}
 @media (max-width:560px){.venue-strip{grid-template-columns:1fr}}
 
-.shot{
+.shot,
+.place-img{
   position:relative;margin:0;overflow:hidden;
   border:1px solid var(--rule);background-color:var(--plum-deep);
   background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27264%27%20height%3D%27264%27%20viewBox%3D%270%200%20264%20264%27%3E%3Cg%20fill%3D%27none%27%20stroke-width%3D%271%27%20stroke-linejoin%3D%27round%27%3E%3Cpath%20d%3D%27M66.0%207.9%2075.2%2043.8%20107.1%2024.9%2088.2%2056.8%20124.1%2066.0%2088.2%2075.2%20107.1%20107.1%2075.2%2088.2%2066.0%20124.1%2056.8%2088.2%2024.9%20107.1%2043.8%2075.2%207.9%2066.0%2043.8%2056.8%2024.9%2024.9%2056.8%2043.8Z%27%20stroke%3D%27rgba%28227%2C190%2C99%2C0.30%29%27%2F%3E%3Cpath%20d%3D%27M43.6%2043.6%20h44.9%20v44.9%20h-44.9%20Z%27%20stroke%3D%27rgba%28227%2C190%2C99%2C0.30%29%27%2F%3E%3Cpath%20d%3D%27M198.0%20139.9%20207.2%20175.8%20239.1%20156.9%20220.2%20188.8%20256.1%20198.0%20220.2%20207.2%20239.1%20239.1%20207.2%20220.2%20198.0%20256.1%20188.8%20220.2%20156.9%20239.1%20175.8%20207.2%20139.9%20198.0%20175.8%20188.8%20156.9%20156.9%20188.8%20175.8Z%27%20stroke%3D%27rgba%28194%2C153%2C238%2C0.20%29%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
@@ -355,6 +357,41 @@ section{scroll-margin-top:78px}
 .shot .pending b{font-family:"Marcellus",serif;font-weight:400;font-size:1rem;color:#EDE2F5}
 .shot .pending span{font-size:.74rem;line-height:1.45;max-width:26ch}
 .shot img:not([hidden]) ~ .pending{display:none}
+
+/* ---------- around chicago ---------- */
+.place-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+@media (max-width:1040px){.place-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.place-grid{grid-template-columns:1fr}}
+.place{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--rule);box-shadow:var(--shadow)}
+.place-img{aspect-ratio:16/10;border:0;border-bottom:1px solid var(--rule)}
+.place-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.place-img img[hidden]{display:none}
+.place-img .pending{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#C0AACF}
+.place-img .pending .ic{width:1.5rem;height:1.5rem;color:#E3BE63;stroke-width:1.4}
+.place-img img:not([hidden]) ~ .pending{display:none}
+.place-body{display:flex;flex-direction:column;gap:.5rem;padding:1.15rem 1.25rem 1.35rem;flex:1}
+.place-body h3{font-size:1.16rem;line-height:1.25}
+.place-kind{font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.place-body p{font-size:.9rem;color:var(--ink-2);flex:1}
+.place-link{
+  display:inline-flex;align-items:center;gap:.45rem;margin-top:.4rem;align-self:flex-start;
+  font-size:.82rem;font-weight:600;color:var(--violet);text-decoration:none;
+  border-bottom:1px solid transparent;
+}
+.place-link:hover{border-bottom-color:var(--violet)}
+.subhead{
+  display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;
+  margin:3rem 0 1.4rem;padding-bottom:.7rem;border-bottom:1px solid var(--rule);
+}
+.subhead h3{font-size:1.4rem}
+.subhead span{font-size:.85rem;color:var(--ink-3)}
+.notice{
+  display:flex;gap:.85rem;align-items:flex-start;
+  background:var(--violet-soft);border:1px solid var(--rule);
+  padding:1.05rem 1.25rem;margin-top:1.5rem;font-size:.89rem;color:var(--ink-2);
+}
+.notice .ic{color:var(--violet);margin-top:.2rem;width:1.15rem;height:1.15rem}
+.notice a{color:var(--violet);font-weight:600}
 
 /* ---------- sponsor band ---------- */
 .band{background:var(--plum-deep);color:#F3EBF8;border-block:1px solid var(--gold-line)}
@@ -465,8 +502,8 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
       <a href="#programme">Programme</a>
       <a href="#passes">Passes</a>
       <a href="#venue">Venue</a>
+      <a href="#chicago">Chicago</a>
       <a href="#faq">FAQ</a>
-      <a href="#register">Register</a>
       <a class="btn btn-primary" href="#register">Register Now</a>
     </div>
     <button class="theme-btn" id="themeBtn" type="button" aria-pressed="false" aria-label="Switch to dark theme" title="Switch to dark theme">
@@ -786,6 +823,142 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
         </div>
         <figcaption>Dining &amp; reception</figcaption>
       </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="chicago">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow"><svg class="ic" aria-hidden="true"><use href="#i-pin"></use></svg> Around Chicago</p>
+      <h2>Make a weekend of it</h2>
+      <p>Compass Arena is about 25 minutes from downtown Chicago. If you are travelling in for the showcase, these are worth the extra day.</p>
+    </div>
+
+    <div class="place-grid rv">
+        <article class="place">
+          <figure class="place-img">
+            <img src="img/chicago-artinstitute.jpg" alt="Art Institute of Chicago" loading="lazy" onerror="this.hidden=true">
+            <div class="pending"><svg class="ic" aria-hidden="true"><use href="#i-building"></use></svg></div>
+            <!-- drop the image at img/chicago-artinstitute.jpg to replace this panel -->
+          </figure>
+          <div class="place-body">
+            <p class="place-kind">Museum</p>
+            <h3>Art Institute of Chicago</h3>
+            <p>One of the great encyclopaedic museums — the Impressionist rooms, American Gothic, and the Thorne Miniature Rooms. Book a timed entry slot.</p>
+            <a class="place-link" href="https://www.artic.edu/visit" target="_blank" rel="noopener">Plan a visit<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <figure class="place-img">
+            <img src="img/chicago-skydeck.jpg" alt="Skydeck at Willis Tower" loading="lazy" onerror="this.hidden=true">
+            <div class="pending"><svg class="ic" aria-hidden="true"><use href="#i-chart"></use></svg></div>
+            <!-- drop the image at img/chicago-skydeck.jpg to replace this panel -->
+          </figure>
+          <div class="place-body">
+            <p class="place-kind">View</p>
+            <h3>Skydeck at Willis Tower</h3>
+            <p>103 floors up, with the glass Ledge boxes that cantilever out over Wacker Drive. Timed tickets, cheapest well before sunset.</p>
+            <a class="place-link" href="https://theskydeck.com/" target="_blank" rel="noopener">Book tickets<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <figure class="place-img">
+            <img src="img/chicago-rivercruise.jpg" alt="Architecture River Cruise" loading="lazy" onerror="this.hidden=true">
+            <div class="pending"><svg class="ic" aria-hidden="true"><use href="#i-panel"></use></svg></div>
+            <!-- drop the image at img/chicago-rivercruise.jpg to replace this panel -->
+          </figure>
+          <div class="place-body">
+            <p class="place-kind">Tour</p>
+            <h3>Architecture River Cruise</h3>
+            <p>The Chicago Architecture Center's docent-led cruise along all three branches of the river. Widely rated the single best thing to do in the city.</p>
+            <a class="place-link" href="https://www.architecture.org/tours/" target="_blank" rel="noopener">Browse tours<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <figure class="place-img">
+            <img src="img/chicago-millennium.jpg" alt="Millennium Park & The Bean" loading="lazy" onerror="this.hidden=true">
+            <div class="pending"><svg class="ic" aria-hidden="true"><use href="#i-star"></use></svg></div>
+            <!-- drop the image at img/chicago-millennium.jpg to replace this panel -->
+          </figure>
+          <div class="place-body">
+            <p class="place-kind">Free</p>
+            <h3>Millennium Park & The Bean</h3>
+            <p>Cloud Gate, the Pritzker Pavilion and Lurie Garden, all walkable from the Loop. No ticket needed.</p>
+            <a class="place-link" href="https://www.chicago.gov/city/en/depts/dca/supp_info/millennium_park.html" target="_blank" rel="noopener">Park information<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <figure class="place-img">
+            <img src="img/chicago-msi.jpg" alt="Museum of Science and Industry" loading="lazy" onerror="this.hidden=true">
+            <div class="pending"><svg class="ic" aria-hidden="true"><use href="#i-bulb"></use></svg></div>
+            <!-- drop the image at img/chicago-msi.jpg to replace this panel -->
+          </figure>
+          <div class="place-body">
+            <p class="place-kind">Museum</p>
+            <h3>Museum of Science and Industry</h3>
+            <p>A captured U-505 submarine, a full coal mine and a 3,500 sq ft model railroad. The strongest pick if families are travelling with you.</p>
+            <a class="place-link" href="https://www.msichicago.org/visit/" target="_blank" rel="noopener">Tickets & hours<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <figure class="place-img">
+            <img src="img/chicago-navypier.jpg" alt="Navy Pier" loading="lazy" onerror="this.hidden=true">
+            <div class="pending"><svg class="ic" aria-hidden="true"><use href="#i-play"></use></svg></div>
+            <!-- drop the image at img/chicago-navypier.jpg to replace this panel -->
+          </figure>
+          <div class="place-body">
+            <p class="place-kind">Family</p>
+            <h3>Navy Pier</h3>
+            <p>The Centennial Wheel, boat departures and the lakefront promenade. Entry is free; rides and attractions are ticketed individually.</p>
+            <a class="place-link" href="https://navypier.org/" target="_blank" rel="noopener">What's on<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+    </div>
+
+    <div class="subhead rv">
+      <h3>Halal dining</h3>
+      <span>Every place listed here is halal</span>
+    </div>
+
+    <div class="place-grid rv">
+        <article class="place">
+          <div class="place-body">
+            <p class="place-kind">Indian &middot; Pakistani</p>
+            <h3>Ghareeb Nawaz</h3>
+            <p>A Chicago institution for enormous, inexpensive plates. Listed on Zabihah with its highest halal rating.</p>
+            <a class="place-link" href="https://www.zabihah.com/halal-restaurants/chicago-il-us" target="_blank" rel="noopener">Details<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <div class="place-body">
+            <p class="place-kind">American &middot; Middle Eastern</p>
+            <h3>Naz's Halal Food</h3>
+            <p>Platters, gyros and grills. Also carries Zabihah's highest halal rating.</p>
+            <a class="place-link" href="https://www.zabihah.com/halal-restaurants/chicago-il-us" target="_blank" rel="noopener">Details<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <div class="place-body">
+            <p class="place-kind">Mediterranean</p>
+            <h3>I Dream Of Falafel</h3>
+            <p>Fast-casual bowls and wraps with several Loop locations — the easiest option between sessions downtown.</p>
+            <a class="place-link" href="https://idreamoffalafel.com/" target="_blank" rel="noopener">Details<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+        <article class="place">
+          <div class="place-body">
+            <p class="place-kind">Indian &middot; Pakistani</p>
+            <h3>Tandoor Char House</h3>
+            <p>Sit-down North Indian on Halsted, one of the higher-rated halal kitchens in the city.</p>
+            <a class="place-link" href="https://www.tandoorcharhouse.com/" target="_blank" rel="noopener">Details<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
+          </div>
+        </article>
+    </div>
+
+    <div class="notice rv">
+      <svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg>
+      <span>For the full picture, <a href="https://www.zabihah.com/halal-restaurants/chicago-il-us" target="_blank" rel="noopener">Zabihah</a> lists over 200 verified halal restaurants across Chicago, each showing whether the meat is zabiha. <strong>Please confirm directly with any restaurant before you go</strong> &mdash; ownership and certification change, and this list is a starting point rather than an endorsement.</span>
     </div>
   </div>
 </section>
