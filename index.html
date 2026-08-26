@@ -56,6 +56,7 @@
   --hero-line:rgba(227,190,99,.30);
 
   --shadow:0 1px 2px rgba(36,23,51,.05), 0 12px 32px -18px rgba(36,23,51,.28);
+  --parent-nav-h:0px;
   --maxw:1120px;
   --step:clamp(3.5rem, 7vw, 6.5rem);
 }
@@ -102,9 +103,17 @@ img{max-width:100%}
 }
 .rule-gold{height:1px;background:var(--gold-line);opacity:.7;border:0;margin:0}
 
+/* ---------- skip link ---------- */
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--surface);color:var(--ink);border:1px solid var(--rule-strong);
+  padding:.75rem 1.1rem;font-size:.88rem;font-weight:600;text-decoration:none;border-radius:2px;
+}
+.skip:focus{left:1rem;top:1rem}
+
 /* ---------- nav ---------- */
 .nav{
-  position:sticky;top:0;z-index:60;
+  position:sticky;top:var(--parent-nav-h);z-index:40;
   background:color-mix(in srgb, var(--ground) 88%, transparent);
   backdrop-filter:saturate(1.4) blur(12px);
   border-bottom:1px solid var(--rule);
@@ -163,6 +172,24 @@ img{max-width:100%}
   .nav-links > .btn-primary{display:inline-flex;justify-content:center;margin-top:.9rem;border-bottom:0}
 }
 
+/* ---------- embedded in a host site (Jamaat portal) ----------
+   Set <html class="embedded"> in the host template, or it is detected
+   automatically when the page runs inside an iframe. The host owns the
+   brand and the theme; this bar drops to a plain section jump-bar.       */
+.embedded .mark{display:none}
+.embedded .theme-btn{display:none}
+.embedded .nav{background:var(--surface);backdrop-filter:none}
+.embedded .nav-in{height:52px;justify-content:center;gap:1.15rem}
+.embedded .nav-links{margin-right:auto;margin-left:0}
+.embedded .nav-links a:not(.btn){font-size:.85rem}
+.embedded .btn{padding:.55rem 1.1rem;font-size:.82rem}
+.embedded .hero-in{padding-block:clamp(3rem,7vw,5rem) clamp(2.5rem,5vw,3.5rem)}
+@media (max-width:1040px){
+  .embedded .nav-in{justify-content:flex-start}
+  .embedded .nav-toggle{margin-left:auto}
+  .embedded .nav-links{top:52px}
+}
+
 /* ---------- hero ---------- */
 .hero{
   position:relative;overflow:hidden;isolation:isolate;
@@ -206,7 +233,7 @@ img{max-width:100%}
 .cd-lbl{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--hero-ink-2);font-weight:600;margin-top:.4rem}
 
 /* ---------- generic section ---------- */
-section{scroll-margin-top:78px}
+section{scroll-margin-top:calc(var(--parent-nav-h) + 78px)}
 .sec{padding-block:var(--step)}
 .sec-head .eyebrow{display:flex;align-items:center;gap:.5rem}
 .sec-head{display:flex;flex-direction:column;gap:.85rem;max-width:62ch;margin-bottom:2.75rem}
@@ -490,7 +517,8 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
 </svg>
 
 
-<nav class="nav">
+<a class="skip" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Showcase sections">
   <div class="wrap nav-in">
     <a class="mark" href="#top">
       <svg class="mark-glyph" viewBox="0 0 100 100" aria-hidden="true">
@@ -520,6 +548,7 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
   </div>
 </nav>
 
+<main id="main">
 <header class="hero" id="top">
   <canvas id="khatam" aria-hidden="true"></canvas>
   <div class="wrap hero-in">
@@ -1081,6 +1110,8 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
   </div>
 </section>
 
+</main>
+
 <footer id="contact">
   <div class="wrap">
     <div class="foot-grid">
@@ -1121,6 +1152,15 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
 <script>
 (function () {
   "use strict";
+
+  /* Host-site embedding: the portal owns the brand, theme and top nav. */
+  try {
+    if (window.self !== window.top) {
+      document.documentElement.classList.add("embedded");
+    }
+  } catch (e) {
+    document.documentElement.classList.add("embedded");
+  }
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- mobile nav ---------- */

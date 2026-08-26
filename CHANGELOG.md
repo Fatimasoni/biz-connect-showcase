@@ -25,6 +25,31 @@ and do not need to be served (harmless if they are).
 
 ## Unreleased
 
+### Embedded mode for the Jamaat portal — IMPORTANT FOR DEPLOY
+The page now adapts when it is hosted inside another site.
+
+**What the host template must do:**
+
+    <html class="embedded">                     <!-- if not loaded in an iframe -->
+    :root { --parent-nav-h: 64px; }             <!-- height of the portal's nav -->
+
+`--parent-nav-h` makes this page's sticky bar sit *below* the portal nav and
+fixes every in-page anchor link, which otherwise scroll their heading behind the
+combined header. Measure the portal nav and set the real number.
+
+The `embedded` class is added automatically when the page runs in an iframe. If
+the HTML is pasted into a template instead, set it manually on `<html>`.
+
+**In embedded mode:** the Biz Connect wordmark and theme toggle are hidden (the
+portal owns brand and theme), the bar slims from 70px to 52px, and the hero
+padding tightens. Standalone rendering is unchanged.
+
+**Also:** nav `z-index` dropped 60 → 40 so the portal's nav always wins a
+collision. Added a skip-to-content link, a `<main>` landmark and
+`aria-label="Showcase sections"` on the nav — with two navs on the page, keyboard
+and screen-reader users previously had no way past ~15 links or to tell the two
+navigations apart.
+
 ### Halal dining near the venue
 Split the halal list into two groups: six sit-down restaurants within about
 5&ndash;22 minutes of Compass Arena (Willowbrook and Naperville), and the
