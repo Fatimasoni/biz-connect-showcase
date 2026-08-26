@@ -1153,14 +1153,49 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
 (function () {
   "use strict";
 
-  /* Host-site embedding: the portal owns the brand, theme and top nav. */
-  try {
-    if (window.self !== window.top) {
-      document.documentElement.classList.add("embedded");
+  /* ---------- host-site embedding ----------
+     If anything renders above our nav, this page is inside a host site (the
+     Jamaat portal). The host then owns the brand, the theme and the top nav,
+     so we drop to a plain section bar. Detected at runtime so the host
+     template needs no changes. Force it with <html class="embedded">. */
+  var rootEl = document.documentElement;
+
+  function pinnedHeightAbove(nav) {
+    var pinned = 0;
+    var all = document.body.getElementsByTagName("*");
+    for (var i = 0; i < all.length; i++) {
+      var el = all[i];
+      if (el === nav || nav.contains(el) || el.contains(nav)) { continue; }
+      var cs = window.getComputedStyle(el);
+      if (cs.position !== "fixed" && cs.position !== "sticky") { continue; }
+      var r = el.getBoundingClientRect();
+      if (r.height > 0 && r.height < 240 && r.top <= 2 && r.bottom > pinned) {
+        pinned = r.bottom;
+      }
     }
-  } catch (e) {
-    document.documentElement.classList.add("embedded");
+    return Math.round(pinned);
   }
+
+  function syncHostOffset() {
+    var nav = document.querySelector(".nav");
+    if (!nav) { return; }
+    rootEl.style.setProperty("--parent-nav-h", pinnedHeightAbove(nav) + "px");
+  }
+
+  (function detectHost() {
+    var nav = document.querySelector(".nav");
+    if (!nav) { return; }
+    var inFrame = false;
+    try { inFrame = window.self !== window.top; } catch (e) { inFrame = true; }
+    var sitsBelowSomething =
+      (nav.getBoundingClientRect().top + (window.pageYOffset || 0)) > 4;
+    if (inFrame || sitsBelowSomething) {
+      rootEl.classList.add("embedded");
+      syncHostOffset();
+      window.addEventListener("resize", syncHostOffset);
+      window.addEventListener("load", syncHostOffset);
+    }
+  })();
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- mobile nav ---------- */

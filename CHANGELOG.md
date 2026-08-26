@@ -28,17 +28,13 @@ and do not need to be served (harmless if they are).
 ### Embedded mode for the Jamaat portal — IMPORTANT FOR DEPLOY
 The page now adapts when it is hosted inside another site.
 
-**What the host template must do:**
+**The host template needs no changes at all.** On load the page checks whether
+anything renders above its own nav. If so it switches to embedded mode and
+measures the host header itself, setting `--parent-nav-h` automatically. That
+value offsets the sticky bar and every in-page anchor so headings never land
+behind the combined header. Re-measured on resize.
 
-    <html class="embedded">                     <!-- if not loaded in an iframe -->
-    :root { --parent-nav-h: 64px; }             <!-- height of the portal's nav -->
-
-`--parent-nav-h` makes this page's sticky bar sit *below* the portal nav and
-fixes every in-page anchor link, which otherwise scroll their heading behind the
-combined header. Measure the portal nav and set the real number.
-
-The `embedded` class is added automatically when the page runs in an iframe. If
-the HTML is pasted into a template instead, set it manually on `<html>`.
+To force it either way: `<html class="embedded">` turns it on regardless.
 
 **In embedded mode:** the Biz Connect wordmark and theme toggle are hidden (the
 portal owns brand and theme), the bar slims from 70px to 52px, and the hero
