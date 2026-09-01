@@ -44,7 +44,7 @@ rule: light was requested regardless of OS setting.
 
 1. **Chicago Jamaat portal** — the real home. Hani Anjarwala
    (hani.anjarwala@xcelacore.com) pulls from GitHub and deploys to Kinsta.
-2. **GitHub Pages** — https://fatimasoni.github.io/biz-connect-showcase/ —
+2. **GitHub Pages** — https://fatimasoni-jamaat.github.io/biz-connect-showcase/ —
    staging and review only.
 
 The page **auto-detects** host embedding: if anything renders above its own nav

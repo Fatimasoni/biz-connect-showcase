@@ -8,7 +8,7 @@
 #
 set -e
 NEW="https://bizconnectchicago.org"
-OLD="https://fatimasoni.github.io/biz-connect-showcase"
+OLD="https://fatimasoni-jamaat.github.io/biz-connect-showcase"
 sed -i '' "s|$OLD|$NEW|g" index.html
 echo "bizconnectchicago.org" > CNAME     # only if GitHub Pages serves the domain
 echo "Updated. Tags now pointing at:"
