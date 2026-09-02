@@ -278,6 +278,8 @@ section{scroll-margin-top:calc(var(--parent-nav-h) + 78px)}
 .card h3{font-size:1.5rem;margin-bottom:.35rem}
 .card > .eyebrow{margin-bottom:.9rem}
 .tick{list-style:none;margin:1.2rem 0 0;padding:0;display:flex;flex-direction:column;gap:.85rem}
+.pass .eyebrow{margin-top:1.6rem;margin-bottom:.2rem}
+.pass .price + .eyebrow{margin-top:1.35rem}
 .tick li{display:flex;gap:.85rem;font-size:.95rem;color:var(--ink-2);line-height:1.55}
 .tick li::before{
   content:"";flex:none;width:9px;height:9px;margin-top:.55rem;
@@ -532,19 +534,16 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
     </a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <div class="nav-links" id="navLinks">
-      <a href="#about">About</a>
       <a href="#who">Who Attends</a>
       <a href="#programme">Programme</a>
       <a href="#passes">Tickets</a>
       <a href="#venue">Venue</a>
       <a href="#chicago">Chicago</a>
       <a href="#faq">FAQ</a>
-      <a class="btn btn-primary" href="#register">Register Now</a>
     </div>
     <button class="theme-btn" id="themeBtn" type="button" aria-pressed="false" aria-label="Switch to dark theme" title="Switch to dark theme">
       <svg class="ic" aria-hidden="true"><use href="#i-moon" id="themeIcon"></use></svg>
     </button>
-    <a class="btn btn-primary" href="#register">Register Now</a>
   </div>
 </nav>
 
@@ -584,29 +583,11 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
     </div>
 
     <div class="hero-cta">
-      <a class="btn btn-gold" href="#register">Complete your registration<svg class="ic" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
-      <a class="btn btn-outline-gold" href="#about">Read the vision<svg class="ic" aria-hidden="true"><use href="#i-arrow-down"></use></svg></a>
+      <a class="btn btn-outline-gold" href="#who">Who it&rsquo;s for<svg class="ic" aria-hidden="true"><use href="#i-arrow-down"></use></svg></a>
     </div>
   </div>
 </header>
 
-<section class="sec" id="about">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">The Vision</p>
-      <h2>Business runs in our veins</h2>
-    </div>
-    <div class="vision">
-      <div class="vision-body rv">
-        <p>Inspired by this guidance, and with the <strong>Dua Mubarak of Aqa Moula (TUS)</strong>, Anjuman-e-Saifee Chicago and Al-Tijaarat al-Raabehah Chicago present a premier three-day Business &amp; Innovation Showcase.</p>
-        <p>The Biz Connect Showcase brings together entrepreneurs, business owners, professionals, manufacturers, retailers, innovators, startups, investors and aspiring leaders — to <strong>connect, collaborate and grow</strong>.</p>
-        <p>More than an exhibition, it is a platform to exchange ideas, discover opportunities, build lasting partnerships and strengthen the economic future of our community.</p>
-        <p>Three days of keynotes, working sessions, a full exhibition floor and deliberate networking, hosted at the spectacular Compass Arena in Willowbrook, Illinois. A state-of-the-art venue, and the right setting for business that starts as conversation and ends as partnership.</p>
-        <p><strong>Registration is open.</strong> Complete your registration today and be part of a gathering where businesses connect, collaborate and thrive.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="sec alt" id="who">
   <div class="wrap">
@@ -632,32 +613,8 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
   </div>
 </section>
 
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Why take part</p>
-      <h2>Great businesses are not built alone</h2>
-      <p>They are built through vision, collaboration and meaningful relationships. Three days in one room is enough time to start all three.</p>
-    </div>
-    <div class="cols">
-      <div class="card rv">
-        <span class="card-ic"><svg class="ic ic-lg" aria-hidden="true"><use href="#i-users"></use></svg></span>
-        <p class="eyebrow">For Attendees</p>
-        <h3>Why attend</h3>
-        <ul class="tick">
-          <li>Hear from leaders who have built businesses within and beyond the community.</li>
-          <li>Find the trends, tools and technology reshaping your sector before your competition does.</li>
-          <li>Build relationships that outlast the weekend — suppliers, partners, mentors, customers.</li>
-          <li>Walk the exhibition floor and see what businesses across North America are making and selling.</li>
-          <li>Bring a specific problem; leave with people who have already solved it.</li>
-          <li>Open doors for the next generation entering business.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="sec alt" id="programme">
+<section class="sec" id="programme">
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">Programme</p>
@@ -712,59 +669,39 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
   </div>
 </section>
 
-<section class="sec" id="passes">
+<section class="sec alt" id="passes">
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">Registration</p>
       <h2>Register to attend</h2>
-      <p>Registration is handled through a single form. Complete it and we will follow up with your pass details ahead of the event.</p>
     </div>
     <div class="passes">
       <div class="pass rv">
         <span class="card-ic"><svg class="ic ic-lg" aria-hidden="true"><use href="#i-ticket"></use></svg></span>
         <h3>Attendee</h3>
         <div class="price">$5<small>Presale &middot; $10 at the door</small></div>
+        <p class="eyebrow">Why attend</p>
+        <ul class="tick">
+          <li>Hear from leaders who have built businesses within and beyond the community.</li>
+          <li>Find the trends, tools and technology reshaping your sector before your competition does.</li>
+          <li>Build relationships that outlast the weekend — suppliers, partners, mentors, customers.</li>
+          <li>Walk the exhibition floor and see what businesses across North America are making and selling.</li>
+          <li>Bring a specific problem; leave with people who have already solved it.</li>
+          <li>Open doors for the next generation entering business.</li>
+        </ul>
+        <p class="eyebrow">Your pass includes</p>
         <ul class="tick">
           <li>Full three-day access to keynotes, panels and sessions</li>
           <li>Entry to the exhibition floor across all three days</li>
           <li>Business Reception Darees, dinner and networking on day one</li>
           <li>Attendee badge and event materials</li>
         </ul>
-        <a class="btn btn-primary" href="#register"><svg class="ic" aria-hidden="true"><use href="#i-ticket"></use></svg>Register as an attendee</a>
       </div>
     </div>
   </div>
 </section>
 
 
-<section class="sec alt" id="register">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow"><svg class="ic" aria-hidden="true"><use href="#i-edit"></use></svg>Complete your registration</p>
-      <h2>Register for the showcase</h2>
-      <p>Registration takes about three minutes.</p>
-    </div>
-    <div class="form-shell rv">
-      <div class="form-note">
-        <span><svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg>Have your <strong>ITS number</strong> and <strong>Jamaat</strong> to hand</span>
-        <span><svg class="ic" aria-hidden="true"><use href="#i-clock"></use></svg>About 3 minutes</span>
-        <span><svg class="ic" aria-hidden="true"><use href="#i-mail"></use></svg>Confirmation sent by email</span>
-      </div>
-      <div class="form-frame">
-        <iframe
-          id="jotform"
-          title="The Biz Connect Showcase 2026 registration form"
-          src="https://form.jotform.com/261984324758066"
-          loading="lazy"
-          allow="geolocation; microphone; camera"></iframe>
-      </div>
-      <p class="form-fallback">
-        <span>Form not loading? It opens fine in its own tab.</span>
-        <a href="https://form.jotform.com/261984324758066" target="_blank" rel="noopener">Open the registration form<svg class="ic" aria-hidden="true"><use href="#i-external"></use></svg></a>
-      </p>
-    </div>
-  </div>
-</section>
 
 <section class="sec" id="venue">
   <div class="wrap">
@@ -1023,16 +960,12 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">Questions</p>
-      <h2>Before you register</h2>
+      <h2>Good to know</h2>
     </div>
     <div class="faq rv">
       <details open>
         <summary>Who is this showcase for?</summary>
         <p>Anyone doing business or preparing to. Established owners, professionals, manufacturers and retailers will find buyers and partners; startups, students and first-time founders will find mentors and a first audience. You do not need a booth to get value from the three days.</p>
-      </details>
-      <details>
-        <summary>How do I register?</summary>
-        <p>Registration runs through a single form. Have your <strong>ITS number</strong> and <strong>Jamaat</strong> to hand, along with your industry and business name. The committee will follow up with the details for your pass, including payment once rates are confirmed.</p>
       </details>
       <details>
         <summary>Can I attend for only one day?</summary>
@@ -1059,18 +992,16 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
           </svg>
           <span class="mark-txt"><b>Biz Connect</b><span>Chicago 2026</span></span>
         </a>
-        <p class="foot-lede">An exclusive Business Expo presented by Anjuman-e-Saifee Chicago with Al-Tijaarat al-Raabehah Chicago, with the Dua Mubarak of Aqa Moula (TUS).</p>
+        <p class="foot-lede">An exclusive Business Expo presented by Anjuman-e-Saifee Chicago with Al-Tijaarat al-Raabehah Chicago.</p>
       </div>
       <div>
         <h4>Event</h4>
-        <a href="#about">About</a>
         <a href="#who">Who attends</a>
         <a href="#programme">Programme</a>
         <a href="#venue">Venue</a>
       </div>
       <div>
         <h4>Take part</h4>
-        <a href="#register">Register now</a>
         <a href="#passes">Tickets</a>
         <!-- TODO: mailbox not yet live - bizconnectchicago.org has no MX records configured -->
         <a href="mailto:info@bizconnectchicago.org">Contact the committee</a>

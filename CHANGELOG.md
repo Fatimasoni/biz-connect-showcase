@@ -45,18 +45,27 @@ dates, programme, Around Chicago, halal dining, FAQ. A correction to any of that
 has to be made twice. `diff index.html exhibitors.html` shows what is
 intentionally different.
 
-**What differs in the attendee version:** the Mawaaiz quote is removed (it could
-not be reworded without misquoting); `Mumineen`, `Bohra` and `Dawoodi` are gone;
-the "Why exhibit" card, the Exhibitor and Sponsor passes, the whole sponsorship
-band and two exhibitor FAQ answers are removed; the nav item reads Tickets; and
-the attendee pass now carries **$5 presale, $10 at the door**. The presenting
-organisations stay. Grid containers that lost children were switched to a single
-column so the remaining content is not stranded at half width.
+**What differs in the attendee version:** the whole vision section is gone,
+taking the Mawaaiz quote with it (a direct quotation could not be reworded without
+misquoting). `Mumineen`, `Bohra`, `Dawoodi`, `Aqa Moula`, `Dua Mubarak` and `TUS`
+no longer appear anywhere on the page. The "Why exhibit" card, the Exhibitor and
+Sponsor passes, the sponsorship band, the exhibitor FAQ answers and the "How do I
+register?" FAQ are all removed, as is the `#register` section — it embedded a
+*Vendor Interest Form* for exhibitors, which was the wrong form for this audience.
+The "Why attend" bullets are merged into the single Attendee card alongside the
+pass inclusions, under **$5 presale, $10 at the door**. The nav item reads Tickets
+and the FAQ heading reads "Good to know". The presenting organisations stay.
 
-**Not resolved:** the embedded JotForm is a *Vendor Interest Form* for exhibitors
-with booth pricing — it is the wrong form for an attendee-only site, and no
-attendee form exists yet. The attendee version should not be published until that
-is sorted.
+Layout follow-ons: containers that lost children were switched to a single column,
+and section `alt` classes were re-flipped twice so the background tint keeps
+alternating after sections were removed.
+
+**Not resolved — the attendee page has no registration path.** Removing the
+vendor form also removed all five calls to action, so the only button left is a
+scroll link. An attendee registration form does not exist yet; until one does, the
+page cannot be published as-is. The single-day FAQ also still points at "the
+registration form" and asserts a full-attendance pass policy that nobody set and
+that sits oddly against per-entry pricing.
 
 ### Embedded mode for the Jamaat portal — IMPORTANT FOR DEPLOY
 The page now adapts when it is hosted inside another site.
