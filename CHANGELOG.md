@@ -25,6 +25,39 @@ and do not need to be served (harmless if they are).
 
 ## Unreleased
 
+### Two versions of the site — IMPORTANT FOR DEPLOY
+The site is now two files. `index.html` is the **attendee version** and is the
+only one published to `bizconnectchicago.org`. `exhibitors.html` is the previous
+full version, byte-identical at the point of the split, and is what the Chicago
+Jamaat portal should deploy.
+
+`_config.yml` excludes `exhibitors.html` from the published GitHub Pages site, so
+it is present in the repository but not reachable on the public domain. The same
+exclude list also stops the internal docs being served — `CLAUDE.md` and the rest
+were previously readable at the public URL.
+
+**Deploy note for the portal:** deploy `exhibitors.html` (rename it to
+`index.html` at the web root, or serve it directly). Deploying `index.html` from
+this repository to the portal would publish the attendee version.
+
+**Keeping them in step:** roughly two-thirds of the two files is shared — venue,
+dates, programme, Around Chicago, halal dining, FAQ. A correction to any of that
+has to be made twice. `diff index.html exhibitors.html` shows what is
+intentionally different.
+
+**What differs in the attendee version:** the Mawaaiz quote is removed (it could
+not be reworded without misquoting); `Mumineen`, `Bohra` and `Dawoodi` are gone;
+the "Why exhibit" card, the Exhibitor and Sponsor passes, the whole sponsorship
+band and two exhibitor FAQ answers are removed; the nav item reads Tickets; and
+the attendee pass now carries **$5 presale, $10 at the door**. The presenting
+organisations stay. Grid containers that lost children were switched to a single
+column so the remaining content is not stranded at half width.
+
+**Not resolved:** the embedded JotForm is a *Vendor Interest Form* for exhibitors
+with booth pricing — it is the wrong form for an attendee-only site, and no
+attendee form exists yet. The attendee version should not be published until that
+is sorted.
+
 ### Embedded mode for the Jamaat portal — IMPORTANT FOR DEPLOY
 The page now adapts when it is hosted inside another site.
 

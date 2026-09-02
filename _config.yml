@@ -1,0 +1,21 @@
+# GitHub Pages (Jekyll) configuration.
+#
+# Everything listed under `exclude` stays in the repository but is NOT copied to
+# the published site at bizconnectchicago.org.
+#
+# exhibitors.html is the full version of the site — it keeps the exhibitor and
+# sponsorship content and the community terminology. It is kept here for the
+# Chicago Jamaat portal deploy and must not be reachable on the public domain,
+# which serves the attendee version (index.html) only.
+#
+# The rest are source and internal documentation. CLAUDE.md in particular holds
+# candid project notes and contact addresses that should not be public.
+
+exclude:
+  - exhibitors.html
+  - CLAUDE.md
+  - CHANGELOG.md
+  - README.md
+  - switch-domain.sh
+  - og-card.html
+  - img/README.md

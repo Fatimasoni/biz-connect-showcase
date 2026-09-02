@@ -21,7 +21,15 @@ Ashara Mubarak. The event follows from that guidance, with Dua Mubarak.
 
 ## Architecture
 
-**One file: `index.html`.** No build step, no dependencies, no framework, no
+**Two files, one per audience.** `index.html` is the attendee version and the only
+one published to `bizconnectchicago.org`. `exhibitors.html` is the full version
+(exhibitor and sponsorship content, community terminology) for the Jamaat portal.
+`_config.yml` keeps `exhibitors.html` and the internal docs out of the published
+Pages site. They share about two-thirds of their content, so shared corrections
+must be made twice — `diff index.html exhibitors.html` shows the intended
+differences.
+
+**Each file is self-contained.** No build step, no dependencies, no framework, no
 server-side code. Vanilla HTML/CSS/JS. Deploying is a file copy.
 
     index.html      the entire site
