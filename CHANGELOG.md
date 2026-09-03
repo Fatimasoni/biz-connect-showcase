@@ -25,6 +25,38 @@ and do not need to be served (harmless if they are).
 
 ## Unreleased
 
+### Attendee version is now a TWO-day event - 5&ndash;6 December
+The attendee page describes a two-day event. Friday 4 December ("Orientation")
+was removed from the programme entirely, and the remaining days renumbered: day
+one is Saturday 5 December ("Discover"), day two is Sunday 6 December ("Grow").
+
+Everything downstream of that changed with it: the seven date strings across the
+meta tags, hero and footer; the countdown target (now `2026-12-05T09:00:00-06:00`
+&mdash; the 09:00 start time is an assumption, since only Friday had a stated
+time); "three days"/"three-day" copy throughout, including the pass inclusion;
+and the programme intro, which described three days each having their own job.
+
+Dropping Friday also removed the Business Reception Darees, so that pass inclusion
+was deleted &mdash; it promised something no longer on the schedule.
+
+**`exhibitors.html` still says 4&ndash;6 December and three days.** The event
+dates are a fact about the event, not a per-audience presentation choice, so if
+the event really is two days that file is now wrong and needs the same treatment.
+
+**`og.jpg` is stale.** The social preview card still has "4&ndash;6 December" and
+the Hijri date rendered into the image. It needs regenerating from `og-card.html`
+(command in README.md), which itself still carries the old dates.
+
+### Hijri dates removed from the attendee version
+All five references gone: the hero block, the footer line and the three programme
+day labels. `exhibitors.html` keeps them.
+
+### Ticket card widened and trimmed
+The single Attendee card now spans 58rem with the two lists side by side, since
+one card in a three-column grid looked stranded. "Why attend" cut from six bullets
+to four. A "Buy now" button was added &mdash; **its `href` is a placeholder `#`**
+and needs the real ticket purchase URL before this page goes anywhere public.
+
 ### Two versions of the site — IMPORTANT FOR DEPLOY
 The site is now two files. `index.html` is the **attendee version** and is the
 only one published to `bizconnectchicago.org`. `exhibitors.html` is the previous
