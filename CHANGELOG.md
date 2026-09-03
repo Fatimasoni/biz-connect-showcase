@@ -63,9 +63,11 @@ alternating after sections were removed.
 **Not resolved — the attendee page has no registration path.** Removing the
 vendor form also removed all five calls to action, so the only button left is a
 scroll link. An attendee registration form does not exist yet; until one does, the
-page cannot be published as-is. The single-day FAQ also still points at "the
-registration form" and asserts a full-attendance pass policy that nobody set and
-that sits oddly against per-entry pricing.
+page cannot be published as-is. The FAQ is down to two items: the
+"How do I register?" and single-day answers were removed, both having referred to
+a form that is no longer on the page. The Attendee card deliberately ends on the
+pass inclusions with no button, since every available target is either the wrong
+form or a mailbox that bounces.
 
 ### Embedded mode for the Jamaat portal — IMPORTANT FOR DEPLOY
 The page now adapts when it is hosted inside another site.
