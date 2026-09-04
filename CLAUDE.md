@@ -5,15 +5,16 @@ came from no longer exists.
 
 ## What this is
 
-Event website for a three-day Business Expo.
+Event website for a two-day Business Expo. It was three days until 2026-09-03,
+when Friday 4 December was dropped; see CHANGELOG.md.
 
 | | |
 | --- | --- |
 | Event | The Biz Connect Showcase 2026 |
 | Presented by | Anjuman-e-Saifee Chicago, with Al-Tijaarat al-Raabehah Chicago |
-| Dates | 4–6 December 2026 · 25–27 Jumadal Ukhra 1448 |
+| Dates | 5–6 December 2026 · 26–27 Jumadal Ukhra 1448 |
 | Venue | Compass Arena, 625 Joliet Road, Willowbrook, IL 60527 |
-| Registration | https://form.jotform.com/261984324758066 (embedded on the page) |
+| Registration | https://form.jotform.com/261984324758066 &mdash; a **Vendor Interest Form** for exhibitors, with booth pricing. Embedded on `exhibitors.html` only; the attendee page has no registration form and no attendee form exists yet. |
 | Audience | Dawoodi Bohra business community, North America |
 
 Origin: Aqa Moula (TUS) delivered Mawaaiz Nooraniyah on *Tijaarat Hunar* during
@@ -34,7 +35,8 @@ server-side code. Vanilla HTML/CSS/JS. Deploying is a file copy.
 
     index.html      the entire site
     og.jpg          1200×630 social / WhatsApp preview card
-    img/            venue and Chicago photos — currently empty, placeholders show
+    img/            3 venue photos present (rights UNCONFIRMED, uncommitted);
+                    6 Chicago slots still empty, placeholders show
     og-card.html    source for regenerating og.jpg (command in README)
     CHANGELOG.md    per-change deploy notes — keep this updated
     README.md       deploy + release-notification conventions
@@ -84,15 +86,25 @@ template needs no changes. Force it with `<html class="embedded">`.
 
 ## Outstanding — blockers first
 
-1. **The contact email is fake.** `info@bizconnectchicago.com` was invented
-   during the build; the domain is unregistered, so mail bounces. Three CTAs
-   point at it. `bizconnectchicago.com` was still available as of 2026-08-25 —
-   registering it fixes the email and gives the event a real domain.
-2. **No pricing.** Attendee and exhibitor cards read "Rates announced soon";
-   sponsorship reads "Tiers on request".
-3. **No images at all.** Nine slots: 3 venue, 6 Chicago attractions. Filenames
-   and licensing guidance in `img/README.md`. Also missing: Anjuman-e-Saifee
-   logo, Al-Tijaarat al-Raabehah logo, event wordmark.
+1. **The attendee page has no way to register or pay.** The $5 presale / $10 door
+   price is stated, and the "Buy now" button's `href` is a placeholder `#`. There
+   is no attendee form; the only JotForm that exists is the exhibitor vendor form.
+   Do not publish the attendee page until this is resolved.
+2. **`info@bizconnectchicago.org` bounces.** The domain is registered and serving
+   the site over HTTPS, but it has no MX records. The address is still the footer
+   contact on both versions.
+3. **Venue photo rights are unconfirmed.** Three photos are in `img/` but
+   uncommitted: they arrived over WhatsApp, one is a screenshot of an Instagram
+   story, and the exterior looks like a property listing photo. Ask Compass Arena
+   for a media kit rather than publishing these.
+4. **The two-day programme has no opening ceremony and no keynote.** Both lived on
+   the deleted Friday block, along with the Business Reception Darees and Dinner.
+   Day one is now the expo floor and day two the closing sessions.
+5. **`og.jpg` says "Where Mumineen businesses meet, grow & thrive".** Both pages
+   share this card, so the attendee page &mdash; which has no sect terminology in
+   its markup &mdash; still previews with it on WhatsApp.
+6. **Six Chicago image slots are still empty**, as are the organisation logos and
+   the event wordmark.
 
 **Copy written by Claude that the committee has never approved.** It reads as
 finished official copy, which is the risk: the 12 "why attend / why exhibit"
@@ -106,10 +118,16 @@ hotel room block? separate exhibitor form? speaker lineup? registration deadline
 
 ## Confirmed correct — don't re-litigate
 
-Event name, both calendar dates, venue name and address, the full three-day
-programme (day names, themes, focus lines, all twelve highlights, 5:00pm day-one
-start), the taglines, the audience list, and the registration form and its
-fields. All taken from the organisers' own materials.
+Event name, venue name and address, the day themes and focus lines, the taglines,
+the audience list, and the registration form's fields. All taken from the
+organisers' own materials.
+
+**No longer true:** the dates and the three-day programme were previously listed
+here as confirmed. The event was changed to two days (5&ndash;6 December) on
+2026-09-03 at Fatima's instruction, which dropped Friday 4 December, its four
+programme items and the 5:00pm day-one start. The countdown now targets
+`2026-12-05T09:00:00-06:00`; **the 09:00 start time is an assumption** carried
+over from the old Friday target and has not been confirmed.
 
 ## Working notes
 
