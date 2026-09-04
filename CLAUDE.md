@@ -12,7 +12,7 @@ when Friday 4 December was dropped; see CHANGELOG.md.
 | --- | --- |
 | Event | The Biz Connect Showcase 2026 |
 | Presented by | Anjuman-e-Saifee Chicago, with Al-Tijaarat al-Raabehah Chicago |
-| Dates | 5–6 December 2026 · 26–27 Jumadal Ukhra 1448 |
+| Dates | 5–6 December 2026 · 26–27 Jamadul Ukhra 1448 |
 | Venue | Compass Arena, 625 Joliet Road, Willowbrook, IL 60527 |
 | Registration | https://form.jotform.com/261984324758066 &mdash; a **Vendor Interest Form** for exhibitors, with booth pricing. Embedded on `exhibitors.html` only; the attendee page has no registration form and no attendee form exists yet. |
 | Audience | Dawoodi Bohra business community, North America |

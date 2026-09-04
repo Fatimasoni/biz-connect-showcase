@@ -3,7 +3,8 @@
 Event site for the Business Expo presented by Anjuman-e-Saifee Chicago
 with Al-Tijaarat al-Raabehah Chicago.
 
-**4–6 December 2026 · 25–27 Jumadal Ukhra 1448**
+**5–6 December 2026 · 26–27 Jamadul Ukhra 1448**
+8:30am – 3:30pm both days
 Compass Arena, 625 Joliet Road, Willowbrook, IL 60527
 
 Single static file: `index.html`. No build step, no dependencies.
