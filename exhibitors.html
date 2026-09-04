@@ -564,7 +564,7 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
     <div class="hero-meta">
       <div class="meta-item">
         <span class="k"><svg class="ic" aria-hidden="true"><use href="#i-calendar"></use></svg>Dates</span>
-        <span class="v">5&ndash;6 December 2026<small>26&ndash;27 Jumadal Ukhra 1448</small></span>
+        <span class="v">5&ndash;6 December 2026<small>26&ndash;27 Jumadal Ukhra 1448 &nbsp;&middot;&nbsp; 8:30am &ndash; 3:00pm daily</small></span>
       </div>
       <div class="meta-item">
         <span class="k"><svg class="ic" aria-hidden="true"><use href="#i-pin"></use></svg>Venue</span>
@@ -1221,7 +1221,7 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
   });
 
   /* ---------- countdown to 4 Dec 2026, 09:00 America/Chicago (UTC-6) ---------- */
-  var target = Date.parse("2026-12-05T09:00:00-06:00");
+  var target = Date.parse("2026-12-05T08:30:00-06:00");
   var cd = { d: document.getElementById("cdD"), h: document.getElementById("cdH"),
              m: document.getElementById("cdM"), s: document.getElementById("cdS") };
   function pad(n) { return n < 10 ? "0" + n : String(n); }
