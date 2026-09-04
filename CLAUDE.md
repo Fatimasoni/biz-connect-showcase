@@ -90,9 +90,11 @@ template needs no changes. Force it with `<html class="embedded">`.
    price is stated, and the "Buy now" button's `href` is a placeholder `#`. There
    is no attendee form; the only JotForm that exists is the exhibitor vendor form.
    Do not publish the attendee page until this is resolved.
-2. **`info@bizconnectchicago.org` bounces.** The domain is registered and serving
-   the site over HTTPS, but it has no MX records. The address is still the footer
-   contact on both versions.
+2. **`bizconnectchicago.org` still has no MX records**, so no address at that
+   domain can receive mail. The footer contact on both versions is now
+   `tr@chicagojamaat.org` &mdash; taken from the attendee form's Zelle instructions
+   and verified to have Google Workspace MX records. If a `@bizconnectchicago.org`
+   address is wanted later, the domain owner has to add MX records first.
 3. **Venue photo rights are unconfirmed.** Three photos are in `img/` but
    uncommitted: they arrived over WhatsApp, one is a screenshot of an Instagram
    story, and the exterior looks like a property listing photo. Ask Compass Arena
