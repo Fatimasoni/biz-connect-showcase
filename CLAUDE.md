@@ -14,7 +14,7 @@ when Friday 4 December was dropped; see CHANGELOG.md.
 | Presented by | Anjuman-e-Saifee Chicago, with Al-Tijaarat al-Raabehah Chicago |
 | Dates | 5–6 December 2026 · 26–27 Jamadul Ukhra 1448 |
 | Venue | Compass Arena, 625 Joliet Road, Willowbrook, IL 60527 |
-| Registration | https://form.jotform.com/261984324758066 &mdash; a **Vendor Interest Form** for exhibitors, with booth pricing. Embedded on `exhibitors.html` only; the attendee page has no registration form and no attendee form exists yet. |
+| Registration | Two forms. Attendees: https://form.jotform.com/262430125585151 (embedded on `index.html`) &mdash; $5 in advance by Zelle to `tr@chicagojamaat.org`, $10 at the door, over-16s only. Exhibitors: https://form.jotform.com/261984324758066, a Vendor Interest Form with booth pricing $350&ndash;$950 (embedded on `exhibitors.html`). |
 | Audience | Dawoodi Bohra business community, North America |
 
 Origin: Aqa Moula (TUS) delivered Mawaaiz Nooraniyah on *Tijaarat Hunar* during
@@ -35,8 +35,8 @@ server-side code. Vanilla HTML/CSS/JS. Deploying is a file copy.
 
     index.html      the entire site
     og.jpg          1200×630 social / WhatsApp preview card
-    img/            3 venue photos present (rights UNCONFIRMED, uncommitted);
-                    6 Chicago slots still empty, placeholders show
+    img/            all 9 photos present and live. 3 venue (rights UNCONFIRMED
+                    - see below); 6 Chicago from Unsplash, ids in img/README.md
     og-card.html    source for regenerating og.jpg (command in README)
     CHANGELOG.md    per-change deploy notes — keep this updated
     README.md       deploy + release-notification conventions
@@ -52,10 +52,14 @@ rule: light was requested regardless of OS setting.
 
 ## Hosting — two places at once
 
-1. **Chicago Jamaat portal** — the real home. Hani Anjarwala
-   (hani.anjarwala@xcelacore.com) pulls from GitHub and deploys to Kinsta.
-2. **GitHub Pages** — https://fatimasoni-jamaat.github.io/biz-connect-showcase/ —
-   staging and review only.
+1. **https://bizconnectchicago.org** &mdash; LIVE and public since 2026-09-04,
+   serving `index.html` (the attendee version) via GitHub Pages from `main`/root.
+   The domain is registered at GoDaddy in a third party's account, not the
+   organisation's, and was transfer-locked until roughly 2026-10-30.
+2. **Chicago Jamaat portal** &mdash; Hani Anjarwala (hani.anjarwala@xcelacore.com)
+   pulls from GitHub and deploys to Kinsta. **Deploy `exhibitors.html` there, not
+   `index.html`.**
+3. The `fatimasoni-jamaat.github.io` URL now 301s to the custom domain.
 
 The page **auto-detects** host embedding: if anything renders above its own nav
 it adds `embedded` to `<html>`, measures the host header, and sets
@@ -65,10 +69,12 @@ template needs no changes. Force it with `<html class="embedded">`.
 
 ## Non-negotiables
 
-- **Never publish images or content without rights.** Venue photos, attraction
-  photos and logos are all missing for exactly this reason, and the placeholders
-  are designed to look intentional. Do not "solve" this from Google Images,
-  Yelp, or the attractions' own sites.
+- **Never publish images or content without rights.** Do not "solve" missing
+  images from Google Images, Yelp, or the subjects' own sites. Unsplash and
+  Pexels are fine (no attribution needed); Wikimedia Commons mostly is not,
+  because CC BY-SA would require a visible photographer credit on the page.
+  Restaurant photos are the hard case: stock food photography on a named
+  restaurant's card misrepresents whose food it is, so those cards stay text-only.
 - **Halal listings are religious information, not filler.** Every restaurant came
   from Zabihah (the community-verified directory) carrying a high halal rating,
   and none is listed there as serving alcohol. Do not add a place you cannot
@@ -86,27 +92,32 @@ template needs no changes. Force it with `<html class="embedded">`.
 
 ## Outstanding — blockers first
 
-1. **The attendee page has no way to register or pay.** The $5 presale / $10 door
-   price is stated, and the "Buy now" button's `href` is a placeholder `#`. There
-   is no attendee form; the only JotForm that exists is the exhibitor vendor form.
-   Do not publish the attendee page until this is resolved.
+1. **Enforce HTTPS is off** in repo Settings &rarr; Pages, so `http://` serves the
+   site instead of redirecting. Needs repo **admin** &mdash; a Write collaborator gets
+   HTTP 404 from the API. Also, the `_github-pages-challenge-fatimasoni-jamaat`
+   TXT record was never added, so the domain is not verified to the account.
 2. **`bizconnectchicago.org` still has no MX records**, so no address at that
    domain can receive mail. The footer contact on both versions is now
    `tr@chicagojamaat.org` &mdash; taken from the attendee form's Zelle instructions
    and verified to have Google Workspace MX records. If a `@bizconnectchicago.org`
    address is wanted later, the domain owner has to add MX records first.
-3. **Venue photo rights are unconfirmed.** Three photos are in `img/` but
-   uncommitted: they arrived over WhatsApp, one is a screenshot of an Instagram
-   story, and the exterior looks like a property listing photo. Ask Compass Arena
-   for a media kit rather than publishing these.
+3. **Venue photo rights are unconfirmed and the photos are LIVE.** The three
+   `venue-*.jpg` files arrived over WhatsApp; one is a screenshot of an Instagram
+   story and the exterior looks like a property listing photo. They were published
+   on Fatima's instruction. Getting a media kit from Compass Arena would put this
+   on a proper footing. The 6 Chicago photos are fine &mdash; Unsplash licence, no
+   attribution required.
 4. **The two-day programme has no opening ceremony and no keynote.** Both lived on
    the deleted Friday block, along with the Business Reception Darees and Dinner.
    Day one is now the expo floor and day two the closing sessions.
 5. **`og.jpg` says "Where Mumineen businesses meet, grow & thrive".** Both pages
    share this card, so the attendee page &mdash; which has no sect terminology in
    its markup &mdash; still previews with it on WhatsApp.
-6. **Six Chicago image slots are still empty**, as are the organisation logos and
-   the event wordmark.
+6. **No organisation logos and no event wordmark.** The nav mark is a generic
+   eight-point star drawn in SVG.
+7. **The exhibitor version still carries copy the attendee version has fixed** &mdash;
+   the "passes are being planned around full attendance" FAQ, and the
+   attendee/exhibitor single-form claim that was never true.
 
 **Copy written by Claude that the committee has never approved.** It reads as
 finished official copy, which is the risk: the 12 "why attend / why exhibit"
@@ -128,8 +139,9 @@ organisers' own materials.
 here as confirmed. The event was changed to two days (5&ndash;6 December) on
 2026-09-03 at Fatima's instruction, which dropped Friday 4 December, its four
 programme items and the 5:00pm day-one start. The countdown now targets
-`2026-12-05T09:00:00-06:00`; **the 09:00 start time is an assumption** carried
-over from the old Friday target and has not been confirmed.
+`2026-12-05T08:30:00-06:00`. Timings are **8:30am&ndash;3:30pm both days**,
+confirmed by Fatima on 2026-09-04, and the Hijri month is transliterated
+**Jamadul Ukhra**.
 
 ## Working notes
 
