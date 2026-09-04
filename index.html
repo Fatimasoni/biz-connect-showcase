@@ -281,6 +281,7 @@ section{scroll-margin-top:calc(var(--parent-nav-h) + 78px)}
 .pass .eyebrow{margin-top:1.6rem;margin-bottom:.2rem}
 .pass-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 2.75rem;margin-top:.4rem}
 .pass-col .eyebrow{margin-top:1.2rem}
+.pass-cta{margin-top:1.75rem;align-self:start}
 @media (max-width:760px){.pass-cols{grid-template-columns:1fr}}
 .pass .price + .eyebrow{margin-top:1.35rem}
 .tick li{display:flex;gap:.85rem;font-size:.95rem;color:var(--ink-2);line-height:1.55}
@@ -543,6 +544,7 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
       <a href="#venue">Venue</a>
       <a href="#chicago">Chicago</a>
       <a href="#faq">FAQ</a>
+      <a class="btn btn-primary nav-cta" href="#register">Register Now</a>
     </div>
     <button class="theme-btn" id="themeBtn" type="button" aria-pressed="false" aria-label="Switch to dark theme" title="Switch to dark theme">
       <svg class="ic" aria-hidden="true"><use href="#i-moon" id="themeIcon"></use></svg>
@@ -586,6 +588,7 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
     </div>
 
     <div class="hero-cta">
+      <a class="btn btn-gold" href="#register">Register now<svg class="ic" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
       <a class="btn btn-outline-gold" href="#who">Who it&rsquo;s for<svg class="ic" aria-hidden="true"><use href="#i-arrow-down"></use></svg></a>
     </div>
   </div>
@@ -688,14 +691,45 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
           </ul>
           </div>
         </div>
+        <a class="btn btn-primary pass-cta" href="#register"><svg class="ic" aria-hidden="true"><use href="#i-ticket"></use></svg>Register</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="register">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow"><svg class="ic" aria-hidden="true"><use href="#i-edit"></use></svg>Complete your registration</p>
+      <h2>Register for the showcase</h2>
+      <p>It takes about three minutes. Payment is $5 by Zelle &mdash; the details are on the form.</p>
+    </div>
+    <div class="form-shell rv">
+      <div class="form-note">
+        <span><svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg>Name, email and phone to hand</span>
+        <span><svg class="ic" aria-hidden="true"><use href="#i-clock"></use></svg>About 3 minutes</span>
+        <span><svg class="ic" aria-hidden="true"><use href="#i-mail"></use></svg>Confirmation by email once payment is received</span>
+      </div>
+      <div class="form-frame">
+        <iframe
+          id="jotform"
+          title="The Biz Connect Showcase 2026 attendee registration form"
+          src="https://form.jotform.com/262430125585151"
+          loading="lazy"
+          allow="geolocation; microphone; camera"></iframe>
+      </div>
+      <p class="form-fallback">
+        <span>Form not loading? It opens fine in its own tab.</span>
+        <a href="https://form.jotform.com/262430125585151" target="_blank" rel="noopener">Open the registration form<svg class="ic" aria-hidden="true"><use href="#i-ext"></use></svg></a>
+      </p>
     </div>
   </div>
 </section>
 
 
 
-<section class="sec" id="venue">
+
+<section class="sec alt" id="venue">
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">The Venue</p>
@@ -749,7 +783,7 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
   </div>
 </section>
 
-<section class="sec alt" id="chicago">
+<section class="sec" id="chicago">
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow"><svg class="ic" aria-hidden="true"><use href="#i-pin"></use></svg> Around Chicago</p>
@@ -948,7 +982,7 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
 </section>
 
 
-<section class="sec" id="faq">
+<section class="sec alt" id="faq">
   <div class="wrap">
     <div class="sec-head rv">
       <p class="eyebrow">Questions</p>
@@ -958,6 +992,10 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
       <details open>
         <summary>Who is this showcase for?</summary>
         <p>Anyone doing business or preparing to. Established owners, professionals, manufacturers and retailers will find buyers and partners; startups, students and first-time founders will find mentors and a first audience. You do not need a booth to get value from both days.</p>
+      </details>
+      <details>
+        <summary>How do I register?</summary>
+        <p>Complete the form above &mdash; name, email, phone and a little about your business. Entry is <strong>$5</strong> in advance, paid by Zelle using the details on the form, or <strong>$10</strong> at the door. Your confirmation is emailed once the form is in and payment has been received. Attendees must be over 16.</p>
       </details>
       <details>
         <summary>Is food available at the venue?</summary>
@@ -990,6 +1028,7 @@ footer{background:var(--surface-2);border-top:1px solid var(--rule);padding-bloc
       </div>
       <div>
         <h4>Take part</h4>
+        <a href="#register">Register now</a>
         <a href="#passes">Tickets</a>
         <!-- TODO: mailbox not yet live - bizconnectchicago.org has no MX records configured -->
         <a href="mailto:info@bizconnectchicago.org">Contact the committee</a>
